@@ -7,28 +7,29 @@ A comprehensive computational tool for predicting transcription factor binding s
 
 ## 📁 Project Structure
 D-Sites/
-├── src/ # Main source code
-│ └── D-Sites.py # Primary prediction pipeline
-├── data/ # Data files
-│ └── known_sites/ # Curated known binding sites (collectf_export.tsv)
-├── examples/ # Complete validation datasets
-│ ├── AmrZ/ # AmrZ (Pseudomonas aeruginosa)
-│ ├── GlxR/ # GlxR (Corynebacterium glutamicum)
-│ ├── CodY/ # CodY (Bacillus anthracis)
-│ └── Fnr/ # FNR (Salmonella Typhimurium)
-├── scripts/ # Analysis & benchmarking suite
-│ ├── fullbench.py # Comprehensive benchmarking
-│ ├── comprehensive_validation.py # Validation analysis
-│ ├── fimo_fnr.py # FNR-FIMO comparison
-│ ├── generate_pr_curves.py # PR curve generation
-│ ├── generate_enrichment_plot.py # Enrichment plots
-│ ├── P_R_Bar_plot.py # Precision-Recall plots
-│ ├── master_analysis.py # Master analysis
-│ ├── fnr_fig.py # FNR visualization
-│ └── FNR.py # FNR utilities
-├── figures/ # Generated visualizations
-├── requirements.txt # Python dependencies
-└── LICENSE # MIT License
+├── src/                       # Main source code
+│   └── D-Sites.py             # Primary prediction pipeline
+├── data/                      # Data files
+│   └── known_sites/           # Curated known binding sites (collectf_export.tsv)
+├── examples/                  # Complete validation datasets
+│   ├── AmrZ/                  # AmrZ (Pseudomonas aeruginosa)
+│   ├── GlxR/                  # GlxR (Corynebacterium glutamicum)
+│   ├── CodY/                  # CodY (Bacillus anthracis)
+│   └── Fnr/                   # FNR (Salmonella Typhimurium)
+├── scripts/                   # Analysis & benchmarking suite
+│   ├── fullbench.py           # Comprehensive benchmarking
+│   ├── comprehensive_validation.py # Validation analysis
+│   ├── fimo_fnr.py            # FNR-FIMO comparison
+│   ├── generate_pr_curves.py  # PR curve generation
+│   ├── generate_enrichment_plot.py # Enrichment plots
+│   ├── P_R_Bar_plot.py        # Precision-Recall plots
+│   ├── master_analysis.py     # Master analysis
+│   ├── fnr_fig.py             # FNR visualization
+│   └── FNR.py                 # FNR utilities
+├── figures/                   # Generated visualizations
+├── requirements.txt           # Python dependencies
+└── LICENSE                    # MIT License
+
 
 ## 🚀 Quick Start
 
