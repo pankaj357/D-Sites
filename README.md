@@ -132,7 +132,7 @@ python scripts/generate_pr_curves.py
 
 ## 🧪 Validation Datasets
 Complete validation data for four transcription factors:
-- **AmrZ**: Pseudomonas aeruginosa PAO1  
+- **AmrZ**: Pseudomonas aeruginosa PAO1   
 - **GlxR**: Corynebacterium glutamicum R  
 - **CodY**: Bacillus anthracis Sterne  
 - **FNR**: Salmonella enterica Typhimurium  
