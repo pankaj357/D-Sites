@@ -76,7 +76,39 @@ python src/D-Sites.py \
     --down 50 \
     --auto_cutoff
 ```
+### Command Breakdown
+#### Required Arguments
+```bash
+--fasta: Genome FASTA file path
 
+--gff: Genome annotation file (GFF3 format)
+
+--motif: TF motif file (JASPAR or MEME format)
+
+--gene: Transcription factor name
+
+--genome_accession: Genome accession ID
+```
+#### Optional Arguments with Defaults
+``` bash
+--outdir results: Output directory
+
+--n_trees 300: Number of Random Forest trees
+
+--neg_ratio 5: Negative:Positive ratio
+
+--prob_cutoff 0.5: Probability cutoff
+
+--pad 10: Window padding around known sites
+
+--seed 42: Random seed
+
+--batch 10000: Batch size for processing
+
+--up 300: Upstream promoter size
+
+--down 50: Downstream promoter size
+```
 ### Run Benchmarking
 ```bash
 # Comprehensive benchmarking
