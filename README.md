@@ -6,6 +6,8 @@
 A comprehensive computational tool for predicting transcription factor binding sites (TFBS) in bacterial genomes using hybrid PWM, DNA shape features, and Random Forest classification.
 
 ## 📁 Project Structure
+
+```bash
 D-Sites/
 ├── src/                     # Main source code
 │   └── D-Sites.py           # Primary prediction pipeline
@@ -35,7 +37,6 @@ D-Sites/
 │
 ├── requirements.txt         # Python dependencies
 └── LICENSE                  # MIT License
-
 
 
 ## 🚀 Quick Start
