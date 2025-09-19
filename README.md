@@ -49,12 +49,32 @@ pip install -r requirements.txt
 ```
 
 ### Basic Prediction
+#### Minimal Command
 ```bash
-python src/D-Sites.py --fasta examples/AmrZ/genome.fasta \
-                     --gff examples/AmrZ/annotation.gff \
-                     --motif examples/AmrZ/motif.meme \
-                     --gene AmrZ \
-                     --genome_accession NC_002516.2
+python src/D-Sites.py --fasta <genome.fasta> \
+                     --gff <annotation.gff> \
+                     --motif <motif_file> \
+                     --gene <TF_name> \
+                     --genome_accession <accession_id>
+```
+#### Complete Example
+```bash
+python src/D-Sites.py \
+    --fasta <path_to_genome.fasta> \
+    --gff <path_to_annotation.gff> \
+    --motif <path_to_motif_file> \
+    --gene <TF_NAME> \
+    --genome_accession <GENOME_ACCESSION> \
+    --outdir results \
+    --n_trees 300 \
+    --neg_ratio 5 \
+    --prob_cutoff 0.5 \
+    --pad 10 \
+    --seed 42 \
+    --batch 10000 \
+    --up 300 \
+    --down 50 \
+    --auto_cutoff
 ```
 
 ### Run Benchmarking
