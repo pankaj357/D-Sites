@@ -407,7 +407,6 @@ def run(args):
 
     positives = []
     pos_meta = []
-    supervised = True
 
     # MODIFIED SECTION: Use the same logic as test.py for positive sequence extraction
     if os.path.exists(KNOWN_DATASET_PATH):
@@ -500,7 +499,7 @@ def run(args):
     
     # Only prompt if no positives found in either source
     elif not positives:
-        choice = input("No known dataset found. Do you want to (1) provide a path or (2) continue unsupervised? ").strip()
+        choice = input("No known dataset found. Do you want to (1) provide a path or (2) exit? ").strip()
         if choice == "1":
             path = input("Enter path to known dataset (plain txt, one sequence per line): ").strip()
             if not os.path.exists(path):
@@ -514,8 +513,7 @@ def run(args):
             if not positives:
                 raise SystemExit("No valid sequences found in known dataset.")
         else:
-            supervised = False
-            logging.warning("Proceeding in UNSUPERVISED mode (PWM+shape only, no RF training).")
+            raise SystemExit("Supervised mode requires known binding sites. Please provide a known dataset.")
 
     pad = int(args.pad)
     contig_rec = None
@@ -527,64 +525,61 @@ def run(args):
         raise SystemExit(f"Genome accession '{args.genome_accession}' not found in FASTA.")
     contig_seq = str(contig_rec.seq).upper()
 
-    clf = None
-    if supervised:
-        n_neg = max(int(args.neg_ratio * len(positives)), 1000)
-        
-        # Mark regions around positive sites as occupied (same as test.py)
-        occupied = np.zeros(len(contig_seq), dtype=bool)
-        for m in pos_meta:
-            a = max(0, int(m['start']) - 1 - pad)
-            b = min(len(contig_seq), int(m['end']) + pad)
-            occupied[a:b] = True
-        
-        available_pos = np.where(~occupied[:len(contig_seq) - motif_len])[0]
-        if len(available_pos) < n_neg:
-            n_neg = len(available_pos)
-            logging.warning("Available negative positions less than requested. Reducing n_neg accordingly.")
-        
-        selected_neg = np.random.choice(available_pos, n_neg, replace=False)
-        negatives = []
-        for i in selected_neg:
-            kmer = contig_seq[i:i + motif_len]
-            if any(c not in "ACGT" for c in kmer):
-                continue
-            for strand_kmer, strand in get_both_strands(kmer):
-                negatives.append(strand_kmer)
-                if len(negatives) >= n_neg:
-                    break
-        logging.info(f"Collected {len(negatives)} negatives (requested {n_neg}).")
+    # Train RandomForestClassifier (SUPERVISED ONLY)
+    n_neg = max(int(args.neg_ratio * len(positives)), 1000)
+    
+    # Mark regions around positive sites as occupied (same as test.py)
+    occupied = np.zeros(len(contig_seq), dtype=bool)
+    for m in pos_meta:
+        a = max(0, int(m['start']) - 1 - pad)
+        b = min(len(contig_seq), int(m['end']) + pad)
+        occupied[a:b] = True
+    
+    available_pos = np.where(~occupied[:len(contig_seq) - motif_len])[0]
+    if len(available_pos) < n_neg:
+        n_neg = len(available_pos)
+        logging.warning("Available negative positions less than requested. Reducing n_neg accordingly.")
+    
+    selected_neg = np.random.choice(available_pos, n_neg, replace=False)
+    negatives = []
+    for i in selected_neg:
+        kmer = contig_seq[i:i + motif_len]
+        if any(c not in "ACGT" for c in kmer):
+            continue
+        for strand_kmer, strand in get_both_strands(kmer):
+            negatives.append(strand_kmer)
+            if len(negatives) >= n_neg:
+                break
+    logging.info(f"Collected {len(negatives)} negatives (requested {n_neg}).")
 
-        X, y = [], []
-        for s in positives:
-            X.append([logodds_score(s, pwm, bg),
-                      (s.count('G') + s.count('C')) / len(s),
-                      seq_entropy(s)] + dinuc_shape_stats(s))
-            y.append(1)
-        for s in negatives:
-            X.append([logodds_score(s, pwm, bg),
-                      (s.count('G') + s.count('C')) / len(s),
-                      seq_entropy(s)] + dinuc_shape_stats(s))
-            y.append(0)
-        X = np.array(X)
-        y = np.array(y, dtype=int)
+    X, y = [], []
+    for s in positives:
+        X.append([logodds_score(s, pwm, bg),
+                  (s.count('G') + s.count('C')) / len(s),
+                  seq_entropy(s)] + dinuc_shape_stats(s))
+        y.append(1)
+    for s in negatives:
+        X.append([logodds_score(s, pwm, bg),
+                  (s.count('G') + s.count('C')) / len(s),
+                  seq_entropy(s)] + dinuc_shape_stats(s))
+        y.append(0)
+    X = np.array(X)
+    y = np.array(y, dtype=int)
 
-        logging.info("Training RandomForestClassifier...")
-        clf = RandomForestClassifier(n_estimators=int(args.n_trees), n_jobs=-1, random_state=int(args.seed))
-        clf.fit(X, y)
-        logging.info("Training completed.")
+    logging.info("Training RandomForestClassifier...")
+    clf = RandomForestClassifier(n_estimators=int(args.n_trees), n_jobs=-1, random_state=int(args.seed))
+    clf.fit(X, y)
+    logging.info("Training completed.")
 
-        if args.auto_cutoff:
-            logging.info("Selecting optimal probability cutoff via PR curve (maximize F1)...")
-            probs_all = clf.predict_proba(X)[:, 1]
-            precision, recall, thresholds = precision_recall_curve(y, probs_all)
-            f1_scores = 2 * precision * recall / (precision + recall + 1e-9)
-            best_idx = np.argmax(f1_scores)
-            best_cutoff = thresholds[best_idx] if best_idx < len(thresholds) else 0.5
-            logging.info(f"Optimal probability cutoff: {best_cutoff:.4f}, F1={f1_scores[best_idx]:.4f}")
-            args.prob_cutoff = best_cutoff
-    else:
-        logging.warning("Skipping RF training — using UNSUPERVISED PWM+shape scanning.")
+    if args.auto_cutoff:
+        logging.info("Selecting optimal probability cutoff via PR curve (maximize F1)...")
+        probs_all = clf.predict_proba(X)[:, 1]
+        precision, recall, thresholds = precision_recall_curve(y, probs_all)
+        f1_scores = 2 * precision * recall / (precision + recall + 1e-9)
+        best_idx = np.argmax(f1_scores)
+        best_cutoff = thresholds[best_idx] if best_idx < len(thresholds) else 0.5
+        logging.info(f"Optimal probability cutoff: {best_cutoff:.4f}, F1={f1_scores[best_idx]:.4f}")
+        args.prob_cutoff = best_cutoff
 
     logging.info("Scanning only promoter windows for candidate TFBS...")
 
@@ -607,39 +602,18 @@ def run(args):
                 positions.append(row["prom_start"] + i)
                 strands.append(strand)
             if len(seqs_chunk) >= batch_size:
-                if supervised:
-                    hits.extend(process_batch_predict(
-                        seqs_chunk, positions, strands, motif_len,
-                        pwm, bg, clf, args.prob_cutoff, args.genome_accession
-                    ))
-                else:
-                    for seq_idx, (seq, strand) in enumerate(seqs_chunk):
-                        score = logodds_score(seq, pwm, bg)
-                        if score is None:
-                            continue
-                        start = positions[seq_idx]
-                        end = start + motif_len - 1 if strand == "+" else start
-                        hits.append({'contig': args.genome_accession, 'start': start, 'end': end,
-                                     'strand': strand, 'score': score, 'seq': seq})
-                seqs_chunk, positions, strands = [], [], []
-        if seqs_chunk:
-            if supervised:
                 hits.extend(process_batch_predict(
                     seqs_chunk, positions, strands, motif_len,
                     pwm, bg, clf, args.prob_cutoff, args.genome_accession
                 ))
-            else:
-                for seq_idx, (seq, strand) in enumerate(seqs_chunk):
-                    score = logodds_score(seq, pwm, bg)
-                    if score is None:
-                        continue
-                    start = positions[seq_idx]
-                    end = start + motif_len - 1 if strand == "+" else start
-                    hits.append({'contig': args.genome_accession, 'start': start, 'end': end,
-                                 'strand': strand, 'score': score, 'seq': seq})
+                seqs_chunk, positions, strands = [], [], []
+        if seqs_chunk:
+            hits.extend(process_batch_predict(
+                seqs_chunk, positions, strands, motif_len,
+                pwm, bg, clf, args.prob_cutoff, args.genome_accession
+            ))
 
     logging.info(f"Promoter scanning completed: {len(hits)} candidate sites predicted.")
-
 
     hits_merged = merge_hits(hits)
 
@@ -686,41 +660,15 @@ def run(args):
         mid = (hit["start"] + hit["end"]) // 2
         hit["nearest_gene"] = min(genes, key=lambda g: min(abs(mid - g[0]), abs(mid - g[1])))[2] if genes else "NA"
 
-
     df_out_full = pd.DataFrame(hits_merged_sorted)
     out_path_full = os.path.join(outdir, f"{args.gene}_predictions_full.csv")
     df_out_full.to_csv(out_path_full, index=False)
-    if supervised:
-        logging.info(f"Full predictions saved to {out_path_full} ({len(hits_merged_sorted)} hits)")
-    else:
-        logging.info(f"Full predictions saved to {out_path_full} ({len(hits_merged_sorted)} hits, UNSUPERVISED mode)")
+    logging.info(f"Full predictions saved to {out_path_full} ({len(hits_merged_sorted)} hits)")
 
     df_out_top = pd.DataFrame(top_hits)
     out_path_top = os.path.join(outdir, f"{args.gene}_predictions_top{int(top_fraction * 100)}pct.csv")
     df_out_top.to_csv(out_path_top, index=False)
-    if supervised:
-        logging.info(f"Top {int(top_fraction * 100)}% high-confidence predictions saved to {out_path_top} ({len(top_hits)} hits)")
-    else:
-        logging.info(f"Top {int(top_fraction * 100)}% high-confidence predictions saved to {out_path_top} ({len(top_hits)} hits, UNSUPERVISED mode)")
-
-    # if supervised:
-    #     probs_all = clf.predict_proba(X)[:, 1]
-    #     precision, recall, thresholds = precision_recall_curve(y, probs_all)
-    #     pr_auc = auc(recall, precision)
-
-    #     plt.figure(figsize=(6, 6))
-    #     plt.plot(recall, precision, color='b', lw=2, label=f'PR curve (AUC={pr_auc:.3f})')
-    #     plt.xlabel('Recall')
-    #     plt.ylabel('Precision')
-    #     plt.title(f'Precision-Recall Curve for {args.gene}')
-    #     plt.legend()
-    #     plt.grid(True)
-    #     plt.tight_layout()
-    #     pr_curve_path = os.path.join(outdir, f"{args.gene}_PR_curve.png")
-    #     plt.savefig(pr_curve_path)
-    #     plt.close()
-    #     logging.info(f"Precision-Recall curve saved to {pr_curve_path}")
-
+    logging.info(f"Top {int(top_fraction * 100)}% high-confidence predictions saved to {out_path_top} ({len(top_hits)} hits)")
 
     logging.info(f"Merged overlapping hits: {len(hits_merged)} final candidate sites.")
 
@@ -760,39 +708,35 @@ def run(args):
     df_out = pd.DataFrame(hits_merged)
     out_path = os.path.join(outdir, f"{args.gene}_predictions.csv")
     df_out.to_csv(out_path, index=False)
-    if supervised:
-        logging.info(f"Predictions saved to {out_path} with gene annotation")
-    else:
-        logging.info(f"Predictions saved to {out_path} (UNSUPERVISED mode) with gene annotation")
+    logging.info(f"Predictions saved to {out_path} with gene annotation")
 
     # ==============
     # VISUALIZATIONS 
     # ==============
 
-    # 1. FEATURE IMPORTANCE PLOT (Only for supervised mode)
-    if supervised:
-        try:
-            feature_names = ['PWM_score', 'GC_content', 'Entropy', 
-                            'MGW_mean', 'MGW_std', 'PropTw_mean', 'PropTw_std',
-                            'Roll_mean', 'Roll_std', 'HelTw_mean', 'HelTw_std']
-            
-            importances = clf.feature_importances_
-            indices = np.argsort(importances)[::-1]
-            
-            plt.figure(figsize=(12, 8))
-            plt.bar(range(len(importances)), importances[indices], align="center", alpha=0.7)
-            plt.xticks(range(len(importances)), [feature_names[i] for i in indices], rotation=45, ha='right')
-            plt.xlabel('Features')
-            plt.ylabel('Importance')
-            plt.title(f'Feature Importance for {args.gene} TFBS Prediction')
-            plt.grid(True, alpha=0.3)
-            plt.tight_layout()
-            importance_path = os.path.join(outdir, f"{args.gene}_feature_importance.png")
-            plt.savefig(importance_path, dpi=300, bbox_inches='tight')
-            plt.close()
-            logging.info(f"Feature importance plot saved to {importance_path}")
-        except Exception as e:
-            logging.warning(f"Could not generate feature importance plot: {e}")
+    # 1. FEATURE IMPORTANCE PLOT
+    try:
+        feature_names = ['PWM_score', 'GC_content', 'Entropy', 
+                        'MGW_mean', 'MGW_std', 'PropTw_mean', 'PropTw_std',
+                        'Roll_mean', 'Roll_std', 'HelTw_mean', 'HelTw_std']
+        
+        importances = clf.feature_importances_
+        indices = np.argsort(importances)[::-1]
+        
+        plt.figure(figsize=(12, 8))
+        plt.bar(range(len(importances)), importances[indices], align="center", alpha=0.7)
+        plt.xticks(range(len(importances)), [feature_names[i] for i in indices], rotation=45, ha='right')
+        plt.xlabel('Features')
+        plt.ylabel('Importance')
+        plt.title(f'Feature Importance for {args.gene} TFBS Prediction')
+        plt.grid(True, alpha=0.3)
+        plt.tight_layout()
+        importance_path = os.path.join(outdir, f"{args.gene}_feature_importance.png")
+        plt.savefig(importance_path, dpi=300, bbox_inches='tight')
+        plt.close()
+        logging.info(f"Feature importance plot saved to {importance_path}")
+    except Exception as e:
+        logging.warning(f"Could not generate feature importance plot: {e}")
 
     # 2. GENOME DISTRIBUTION PLOT
     if hits_merged:
@@ -827,10 +771,9 @@ def run(args):
             plt.title(f'Distribution of Prediction Scores for {args.gene}')
             plt.grid(True, alpha=0.3)
             
-            if supervised:
-                plt.axvline(x=args.prob_cutoff, color='red', linestyle='--', 
-                            linewidth=2, label=f'Cutoff: {args.prob_cutoff:.3f}')
-                plt.legend()
+            plt.axvline(x=args.prob_cutoff, color='red', linestyle='--', 
+                        linewidth=2, label=f'Cutoff: {args.prob_cutoff:.3f}')
+            plt.legend()
             
             plt.tight_layout()
             hist_path = os.path.join(outdir, f"{args.gene}_score_distribution.png")
