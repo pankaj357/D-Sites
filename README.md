@@ -2,6 +2,8 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Stars](https://img.shields.io/github/stars/pankaj357/D-Sites?style=social)]
+[![GitHub Issues](https://img.shields.io/github/issues/pankaj357/D-Sites)]
 
 A comprehensive computational tool for predicting transcription factor binding sites (TFBS) in bacterial genomes using hybrid PWM, DNA shape features, and Random Forest classification.
 
@@ -147,7 +149,7 @@ D-Sites demonstrates:
 ## 📝 Citation
 If you use D-Sites in your research, please cite:
 
-Pankaj et al. (2025). *D-Sites: A computationally efficient tool for predicting protein binding sites in bacterial genomes*. Journal Name, Volume, Pages.
+*D-Sites: A computationally efficient tool for predicting protein binding sites in bacterial genomes*. Manuscript in preparation.
 
 ## 📄 License
 MIT License - see LICENSE for details.
