@@ -2,9 +2,9 @@
 """
 D-Sites: Hybrid TFBS predictor combining PWM, dinucleotide shape, and Random Forest
 
-Author: Pankaj
-Institution: IARI
-Contact: ft.pank@gmail.com
+Author:
+Pankaj, Indian Agricultural Research Institute (IARI), ft.pank@gmail.com  
+Kanaka KK, Scientist, Animal Genetics & Breeding, ICAR-IIAB, India ,kkokay07@gmail.com 
 License: MIT
 
 Version: 1.1.0
