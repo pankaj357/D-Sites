@@ -155,4 +155,4 @@ If you use D-Sites in your research, please cite:
 MIT License - see LICENSE for details.
 
 ## 💬 Contact
-For questions and support, please open an issue on GitHub or contact **ft.pank@gmail.com**.
+For questions and support, please open an issue on GitHub or contact **ft.pank@gmail.com** , **kkokay07@gmail.com**.
