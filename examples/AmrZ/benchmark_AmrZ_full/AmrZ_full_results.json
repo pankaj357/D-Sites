@@ -23,7 +23,7 @@
   "fimo_fn_rate": 0.8512396694214877,
   "pr_auc_dsites": 0.4649879701691599,
   "pr_auc_fimo": 0.43253056041213644,
-  "roc_auc_dsites": 0.6450764462809917,a
+  "roc_auc_dsites": 0.6450764462809917,
   "roc_auc_fimo": 0.5659421487603306,
   "exact_matches": 1,
   "revcomp_matches": 0,
