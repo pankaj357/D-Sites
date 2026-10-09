@@ -99,14 +99,21 @@ dsites --fasta genome.fna --gff genomic.gff --motif motif.txt \
 ```
 
 ## 📈 Performance
-D-Sites demonstrates:
-- 3-4× higher precision in top predictions  
-- 3.02-3.42× enrichment in promoter regions  
+Held-out evaluation (grouped 5-fold site-level cross-validation; thresholds selected from out-of-bag
+predictions; FIMO compared on identical promoter windows at matched prediction counts — full workflow
+in `evaluation/`):
+- Recall of known promoter-localized sites: 75% (AmrZ), 76% (GlxR), 96% (CodY)
+- Ranking quality comparable to FIMO overall; higher precision and recall than FIMO for CodY
+  (0.154 vs 0.118 precision at N = 500)
+- DNA-shape features improve ranking for every factor tested (ablation); largest gain for CodY
+  (~2× PR-AUC vs PWM-only)
+- A model trained on 97 E. coli FNR sites (RegulonDB 13.5) transfers to Salmonella Typhimurium LT2
+  (cross-genome application)
 
 ## 📝 Citation
 If you use D-Sites in your research, please cite:
 
-Pankaj et al. (2025). *D-Sites: A hybrid machine-learning framework for prediction of transcription factor binding sites in bacterial genomes*. Information Sciences (Under Review),2024.
+Pankaj et al. *D-Sites: A hybrid machine-learning framework for prediction of transcription factor binding sites in bacterial genomes*. Evolutionary Bioinformatics (under review).
 
 ## 📄 License
 MIT License - see LICENSE for details.
