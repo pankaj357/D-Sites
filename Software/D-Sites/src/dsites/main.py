@@ -2,6 +2,14 @@
 import argparse
 import logging
 from .predictor import run  # our main pipeline is in predictor.py
+from . import __version__
+
+BANNER = (
+    f"D-Sites v{__version__} - hybrid TFBS prediction (PWM + DNA shape + Random Forest)\n"
+    "Authors: Pankaj (IIT Delhi; contact: ft.pank@gmail.com), "
+    "Kanaka KK (ICAR-Indian Institute of Agricultural Biotechnology)\n"
+    "GitHub: https://github.com/pankaj357/D-Sites"
+)
 
 def cli():
     logging.basicConfig(level=logging.INFO)
@@ -39,6 +47,8 @@ def cli():
                              "promoter windows only")
 
     args = parser.parse_args()
+    print(BANNER)
+    logging.info(BANNER.replace("\n", " | "))
     run(args)
 
 if __name__ == "__main__":
