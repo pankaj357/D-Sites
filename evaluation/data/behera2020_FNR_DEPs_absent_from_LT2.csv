@@ -1,0 +1,17 @@
+accession,gene_symbol,GN_from_description,description,ensembl_gene_id,log2FC_mutant_vs_WT,adj_pvalue,direction,mapping
+D1MC98,agsA,agsA,Aggregation suppressing protein,,-3.09,2.1984695975625499E-2,down_in_mutant_FNR_activated,absent_from_LT2_annotation
+A0A0T9W3H5,yiiS,yiiS,Putative cytoplasmic protein,DT104_24461,-2.29,6.3484033135647003E-2,down_in_mutant_FNR_activated,absent_from_LT2_annotation
+A0A0U1J9E1,ERS157243_0399,ERS157243_03995,Inner membrane protein,DT104_40661,-2.15,0.16420890130799001,down_in_mutant_FNR_activated,absent_from_LT2_annotation
+A0A0H3NIM4,SL1344_3478,yhgI,Fe/S biogenesis protein NfuA,SL1344_3478,-2.0299999999999998,0.12803654672057799,down_in_mutant_FNR_activated,absent_from_LT2_annotation
+A0A0U1F614,uxuA,uxuA,Mannonate dehydratase,DT104_31311,1.49,0.19172746906683699,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+A0A0K6N681,msrB,msrB,Peptide methionine sulfoxide reductase MsrB,TJ38_06795,1.95,5.9532933890458398E-2,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+A0A0H3NAK9,SL1344_1226,yeaA,Peptide methionine sulfoxide reductase MsrB,SL1344_1226,1.95,5.9532933890458398E-2,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+A0A0D6FDT8,DD95_18620,DD95_18620,S-formylglutathione hydrolase,TJ38_09070,2.6,2.5034330515284801E-2,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+Q8HAA6,sb32,sb32,Sb32,,2.7,3.0181073808959201E-2,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+Q4L1Q1,pOU1113_83,,Alpha-helical coiled coil protein,,2.92,2.5172190024394599E-3,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+H9L4H6,tlpA; p6919o069; p8934bo069,tlpA,Alpha-helical coiled-coil protein,TJ38_06065,2.92,2.5172190024394599E-3,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+A0A0T9WAA0,ERS157243_04810,ERS157243_04810,Conjugal transfer surface exclusion protein TraT,ERS157244_04884,3.05,1.5874976969027701E-3,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+E8XBQ3,hutU,hutU,Urocanate hydratase,STM474_0815,3.25,1.7202035085803801E-3,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+G9CA87,p6919o012; p8934bo012,p6919o012,Conjugal transfer surface exclusion protein,,3.36,4.2148443038403399E-4,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+E8XLI2,STM474_p1058,STM474_p1058,Putative cytoplasmic protein,STM474_p1058,3.65,2.18049226162496E-3,up_in_mutant_FNR_repressed,absent_from_LT2_annotation
+A0A0H3NEG4,SL1344_1969,SL1344_1969,Predicted bacteriophage protein,SL1344_1969,3.93,2.5299945379142499E-5,up_in_mutant_FNR_repressed,absent_from_LT2_annotation

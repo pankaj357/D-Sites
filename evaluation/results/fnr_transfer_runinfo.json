@@ -1,0 +1,72 @@
+{
+  "commands": {
+    "fimo_ecoli": [
+      "/Users/admin/meme/bin/fimo",
+      "--thresh",
+      "0.01",
+      "--text",
+      "--oc",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli_oc",
+      "--bfile",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli.bg",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli.meme",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/promoters_FNR_ecoli.fasta"
+    ],
+    "fimo_lt2": [
+      "/Users/admin/meme/bin/fimo",
+      "--thresh",
+      "0.01",
+      "--text",
+      "--oc",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_fnr_lt2_promoters_oc",
+      "--bfile",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_lt2.bg",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_lt2.meme",
+      "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/promoters_FNR_lt2.fasta"
+    ]
+  },
+  "seeds": {
+    "global_seed": 42
+  },
+  "internal_cv_json": "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/cv_FNR_ecoli.json",
+  "note": "Transfer scan + FIMO outputs feed the Phase-4 operon-level test; no enrichment is computed here.",
+  "final_model": {
+    "n_trees": 300,
+    "n_jobs": "4",
+    "cutoff_oob_f1": 0.42857142857142855,
+    "oob_f1": 0.883248730963967,
+    "n_pos": 97,
+    "n_neg_rows": 970,
+    "oob_score": 0.9784442361761949
+  },
+  "transfer": {
+    "n_windows_scored": 1374596,
+    "cutoff": 0.42857142857142855,
+    "n_predictions": 39482,
+    "n_top5pct": 68729,
+    "scan_seconds": 10.3
+  },
+  "fimo_lt2_rows": 45200,
+  "outputs": [
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/cv_FNR_ecoli.json",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fnr_transfer_predictions.csv",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fnr_transfer_predictions_top5pct.csv",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fnr_lt2_window_scores.csv.gz",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_fnr_lt2_promoters.tsv"
+  ],
+  "wall_seconds": 61.4,
+  "python": "3.11.14",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6",
+  "sklearn": "1.9.1",
+  "biopython": "1.88",
+  "dsites": "1.3.0",
+  "fimo": "5.5.4",
+  "seed": 42,
+  "pad": 10,
+  "up": 300,
+  "down": 50,
+  "neg_ratio": 5,
+  "pseudocount": 0.5,
+  "timestamp": "2026-10-09 00:14:59"
+}

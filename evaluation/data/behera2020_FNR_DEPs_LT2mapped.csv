@@ -1,0 +1,138 @@
+accession,gene_symbol,GN_from_description,description,ensembl_gene_id,log2FC_mutant_vs_WT,adj_pvalue,direction,lt2_locus_tag,lt2_gene,lt2_contig,lt2_start,lt2_end,lt2_strand,mapping
+A0A0U1F985,ydfZ,ydfZ,Selenium-binding protein YdfZ,DT104_14791,-6.64,7.28E-15,down_in_mutant_FNR_activated,STM1509,ydfZ,NC_003197.2,1587595,1587812,-,gene_name
+A0A0F7DJ85,yfiD,yfiD,Autonomous glycyl radical cofactor,T096_11740,-4.88,1.11002876284678E-6,down_in_mutant_FNR_activated,STM2646,yfiD,NC_003197.2,2785909,2786307,-,gene_name
+A0A0D6GMP9,DD95_21935,DD95_21935,NAD(P)H dehydrogenase (quinone),TJ38_11255,-4.33,2.1464000720328399E-5,down_in_mutant_FNR_activated,STM1457,,NC_003197.2,1531561,1533778,-,product:nadh dehydrogenase
+A0A0U1J3W8,modA,modA,Molybdate-binding periplasmic protein,DT104_07971,-4.0999999999999996,7.0023576484787794E-5,down_in_mutant_FNR_activated,STM0781,modA,NC_003197.2,845608,846451,+,gene_name
+A0A0F6B948,asnA,asnA,Aspartate--ammonia ligase,STM14_4674,-3.96,1.41746787100837E-4,down_in_mutant_FNR_activated,STM3877,asnA,NC_003197.2,4085215,4086313,+,gene_name
+A0A0U1IR37,hypB,hypB,Hydrogenase isoenzymes formation protein HypB,DT104_28521,-3.7,4.5663320074642102E-4,down_in_mutant_FNR_activated,STM2855,hypB,NC_003197.2,3000215,3001099,+,gene_name
+E8XG18,pmgI,pmgI,"2,3-bisphosphoglycerate-independent phosphoglycerate mutase",STM474_3877,-3.67,5.1496005346922803E-4,down_in_mutant_FNR_activated,STM3704,pmgI,NC_003197.2,3897564,3899120,+,gene_name
+A0A0F6BAA6,STM14_5119,STM14_5119,Putative ABC exporter outer membrane component,STM14_5119,-3.25,9.4924477578854308E-3,down_in_mutant_FNR_activated,STM4259,,NC_003197.2,4479873,4481199,+,product:abc exporter outer membrane
+O85313,spi4_C,spi4_C,ABC exporter outer membrane component homolog,,-3.25,9.4924477578854308E-3,down_in_mutant_FNR_activated,STM4259,,NC_003197.2,4479873,4481199,+,product:abc exporter outer membrane
+Q8ZM26,STM3131,STM3131,Putative cytoplasmic protein,STM3131,-3.23,1.5059138707497E-2,down_in_mutant_FNR_activated,STM3131,,NC_003197.2,3290979,3291471,-,locus_tag
+A0A0F6B418,glpA,glpA,Glycerol-3-phosphate dehydrogenase,STM14_2819,-3.2,3.6546318326109301E-3,down_in_mutant_FNR_activated,STM2284,glpA,NC_003197.2,2390063,2391863,+,gene_name
+Q7CQU1,pflB,pflB,"Pyruvate formate lyase I, induced anaerobically",STM0973,-3.18,3.9941746612958302E-3,down_in_mutant_FNR_activated,STM0973,pflB,NC_003197.2,1055099,1057510,-,locus_tag
+A0A0F7JBA3,yicI_2,yicI_2,Alpha-xylosidase,,-3.13,4.4463391873908404E-3,down_in_mutant_FNR_activated,STM3749,yicI,NC_003197.2,3944588,3946918,-,product:alpha-xylosidase
+A0A0U1K136,ibpB,ibpB,Small heat shock protein IbpB,DT104_37931,-3.1,7.3533762059709903E-3,down_in_mutant_FNR_activated,STM3808,ibpB,NC_003197.2,4009390,4009832,-,gene_name
+A0A0F6B0G2,STM14_1509,STM14_1509,Putative molecular chaperone,STM14_1509,-3.09,2.1984695975625499E-2,down_in_mutant_FNR_activated,STM0656,ybeS,NC_003197.2,718897,720338,+,product:molecular chaperone
+Q103D5,fljB,fljB,Phase 2 flagellin (Fragment),,-3.05,5.9622021755444104E-3,down_in_mutant_FNR_activated,STM2771,fljB,NC_003197.2,2913234,2914761,-,gene_name
+A0A0U1IH56,xylA,xylA,Xylose isomerase,DT104_36441,-3.03,6.3851340770044703E-3,down_in_mutant_FNR_activated,STM3661,xylA,NC_003197.2,3846479,3847813,-,gene_name
+A0A0F6B420,glpC,glpC,sn-glycerol-3-phosphate dehydrogenase subunit C,STM14_2821,-3.01,6.92823596070157E-3,down_in_mutant_FNR_activated,STM2286,glpC,NC_003197.2,2393096,2394299,+,gene_name
+A0A0H3NFZ4,hybA,hybA,Hydrogenase-2 small subunit,SL1344_3123,-3.01,6.9302690450530804E-3,down_in_mutant_FNR_activated,STM3149,hybA,NC_003197.2,3311662,3312663,-,gene_name
+A0A0F7JDF0,tdcE,tdcE,Formate C-acetyltransferase,A7B05_05090,-2.89,1.08448297737774E-2,down_in_mutant_FNR_activated,STM3241,tdcE,NC_003197.2,3406439,3408748,-,gene_name
+E8XG63,STM474_0044,STM474_0044,Putative glycosyl hydrolase,STM474_0044,-2.88,1.11096524596059E-2,down_in_mutant_FNR_activated,STM0041,,NC_003197.2,48372,50417,-,product:glycosyl hydrolase
+Q8ZRZ2,STM0041,STM0041,Putative glycosyl hydrolase,STM0041,-2.88,1.11096524596059E-2,down_in_mutant_FNR_activated,STM0041,,NC_003197.2,48372,50417,-,locus_tag
+A0A0U1JSK5,yccJ,yccJ,YccJ-like protein,DT104_10991,-2.79,2.95267249047967E-2,down_in_mutant_FNR_activated,STM1118,yccJ,NC_003197.2,1204963,1205203,-,gene_name
+A0A0U1FGV6,pepT,pepT,Peptidase T,ERS157233_02360,-2.74,4.1429424125862299E-2,down_in_mutant_FNR_activated,STM1227,pepT,NC_003197.2,1313395,1314636,+,gene_name
+Q8ZKR7,STM4057,STM4057,Putative inner membrane protein,STM4057,-2.67,2.2076852839265099E-2,down_in_mutant_FNR_activated,STM4057,,NC_003197.2,4267936,4268338,+,locus_tag
+A0A0J0WYK9,fis,fis,DNA-binding protein Fis,TJ38_12295,-2.67,2.2076852839265099E-2,down_in_mutant_FNR_activated,STM3385,fis,NC_003197.2,3556262,3556565,+,gene_name
+Q8ZNW0,pykA,pykA,Pyruvate kinase II,STM1888,-2.52,3.57420070399114E-2,down_in_mutant_FNR_activated,STM1888,pykA,NC_003197.2,1982462,1983916,+,locus_tag
+E8XEC4,glpQ,glpQ,Glycerophosphodiester phosphodiesterase,STM474_2378,-2.4900000000000002,3.9582644444496197E-2,down_in_mutant_FNR_activated,STM2282,glpQ,NC_003197.2,2387529,2388614,-,gene_name
+E8XL14,sicA,sicA,Chaperone protein SicA,STM474_3025,-2.44,4.5633019869573799E-2,down_in_mutant_FNR_activated,STM2886,sicA,NC_003197.2,3030905,3031414,-,gene_name
+A0A0L8X1G3,yejL,yejL,UPF0352 protein YejL,TJ38_08900,-2.4300000000000002,7.8661547697331594E-2,down_in_mutant_FNR_activated,STM2227,yejL,NC_003197.2,2328647,2328887,+,gene_name
+A0A0U1GSJ5,nrdD,nrdD,Anaerobic ribonucleoside-triphosphate reductase,DT104_44401,-2.41,8.4723083589734405E-2,down_in_mutant_FNR_activated,STM4452,nrdD,NC_003197.2,4692571,4694720,-,gene_name
+A0A0U1JSK5,yccJ,yccJ,YccJ-like protein,DT104_10991,-2.79,2.95267249047967E-2,down_in_mutant_FNR_activated,STM1118,yccJ,NC_003197.2,1204963,1205203,-,gene_name
+E8XL65,gldA,gldA,Glycerol dehydrogenase,STM474_4293,-2.29,6.3470251654658E-2,down_in_mutant_FNR_activated,STM4108,gldA,NC_003197.2,4322716,4323833,-,gene_name
+E8XF45,yfcZ,yfcZ,Putative cytoplasmic protein,STM474_2489,-2.29,6.3484033135647003E-2,down_in_mutant_FNR_activated,STM2390,yfcZ,NC_003197.2,2501739,2502036,-,gene_name
+E8XEC7,glpB,glpB,Anaerobic glycerol-3-phosphate dehydrogenase subunit B,STM474_2381,-2.2599999999999998,6.9286274679440804E-2,down_in_mutant_FNR_activated,STM2285,glpB,NC_003197.2,2391840,2393112,+,gene_name
+P14845,carA,carA,Carbamoyl-phosphate synthase small chain,STM0066,-2.25,0.16466097534875701,down_in_mutant_FNR_activated,STM0066,carA,NC_003197.2,75812,77028,+,locus_tag
+A0A0H3NDR5,ackA,ackA,Acetate kinase,SL1344_2306,-2.23,7.4134517063305594E-2,down_in_mutant_FNR_activated,STM2337,ackA,NC_003197.2,2447927,2449140,+,gene_name
+A0A0T9V9T3,fliC,fliC_1,Flagellin,DT104_27731,-2.2200000000000002,7.6634776109403197E-2,down_in_mutant_FNR_activated,STM1959,fliC,NC_003197.2,2047655,2049154,-,gene_name
+A0A0W5AJR6,DD95_24045,DD95_24045,Flagellin (Fragment),DD38_23835,-2.2000000000000002,8.2330890769073406E-2,down_in_mutant_FNR_activated,STM1958,fliB,NC_003197.2,2046371,2047583,-,product:flagellin
+A0A0F7J7R0,gapA,gapA,Glyceraldehyde-3-phosphate dehydrogenase,T096_04685,-2.12,0.102641974876557,down_in_mutant_FNR_activated,STM1290,gapA,NC_003197.2,1368684,1369691,-,gene_name
+A0A0M2IVB2,cheB,cheB,Protein-glutamate methylesterase/protein-glutamine glutaminase,TJ38_11870,-2.12,0.102641974876557,down_in_mutant_FNR_activated,STM1917,cheB,NC_003197.2,2012687,2013747,-,gene_name
+P97126,ompR,,S.typhimurium LT2 ompR protein (Fragment),,-2.11,0.178621975146323,down_in_mutant_FNR_activated,STM3502,ompR,NC_003197.2,3659617,3660468,-,gene_name
+A0A0F7JD29,aspA,aspA,Aspartate ammonia-lyase,T096_19960,-2.09,0.11011264556638201,down_in_mutant_FNR_activated,STM4326,aspA,NC_003197.2,4570961,4572466,-,gene_name
+A0A0U1H6I4,yhdH,yhdH,Oxidoreductase,DT104_33681,-2.09,0.10988545091940199,down_in_mutant_FNR_activated,STM3376,yhdH,NC_003197.2,3547007,3547992,+,gene_name
+B2XXQ0,pyrG,pyrG,PyrG (Fragment),,-2.0499999999999998,0.12860278501841699,down_in_mutant_FNR_activated,STM2953,pyrG,NC_003197.2,3098752,3100399,-,gene_name
+A0A0F6B4J5,STM14_3004,STM14_3004,Putative iron-dependent peroxidase,STM14_3004,-2.04,0.124707719531423,down_in_mutant_FNR_activated,STM2446,,NC_003197.2,2557627,2558537,-,product:iron-dependent peroxidase
+A0A0F6B4W4,suhB,suhB,Inositol-1-monophosphatase,STM14_3124,-2.0299999999999998,0.17647703542733401,down_in_mutant_FNR_activated,STM2546,suhB,NC_003197.2,2684427,2685239,+,gene_name
+E8XFX4,xylB,xylB,Xylulose kinase,STM474_3832,-2.02,0.130683918815197,down_in_mutant_FNR_activated,STM3660,xylB,NC_003197.2,3844925,3846393,-,gene_name
+Q9RN40,ushA,ushA,UDP-sugar hydrolase,,-1.98,0.14587771900448801,down_in_mutant_FNR_activated,STM0494,ushA,NC_003197.2,553624,555289,+,gene_name
+E8XHP4,ibpA,ibpA,Small heat shock protein IbpA,STM474_3985,-1.98,0.14587771900448801,down_in_mutant_FNR_activated,STM3809,ibpA,NC_003197.2,4009928,4010356,-,gene_name
+A0A0U1GWP5,yeaD,yeaD,Putative glucose-6-phosphate 1-epimerase,DT104_12641,-1.95,0.15809889137864599,down_in_mutant_FNR_activated,STM1289,yeaD,NC_003197.2,1367465,1368361,-,gene_name
+A0A0F6B6J2,metK,metK,S-adenosylmethionine synthase,STM14_3733,-1.94,0.16265014726458099,down_in_mutant_FNR_activated,STM3090,metK,NC_003197.2,3251684,3252853,+,gene_name
+A0A0H3NDQ5,nuoB,nuoB,NADH-quinone oxidoreductase subunit B,SL1344_2296,1.51,0.18533871677639699,up_in_mutant_FNR_repressed,STM2327,nuoB,NC_003197.2,2438376,2439049,-,gene_name
+A6TBW9,nuoG,nuoG,NADH-quinone oxidoreductase,KPN_02673,1.51,0.18394901317999701,up_in_mutant_FNR_repressed,STM2323,nuoG,NC_003197.2,2431893,2434633,-,gene_name
+E8XJT6,proC,proC,Pyrroline-5-carboxylate reductase,STM474_0402,1.52,0.18216360560310599,up_in_mutant_FNR_repressed,STM0386,proC,NC_003197.2,439257,440080,-,gene_name
+E8XE23,rmf,rmf,Ribosome modulation factor,STM474_1058,1.52,0.18216360560310599,up_in_mutant_FNR_repressed,STM1066,rmf,NC_003197.2,1157615,1157796,+,gene_name
+A0A0H3NKE0,pagC,pagC,Outer membrane invasion protein (PagC),SL1344_1184,1.66,0.12961485929377201,up_in_mutant_FNR_repressed,STM1246,pagC,NC_003197.2,1332234,1332798,+,gene_name
+A0A0U1FZY6,gpmA,gpmA,"2,3-bisphosphoglycerate-dependent phosphoglycerate mutase",DT104_07881,1.67,0.12744639818322101,up_in_mutant_FNR_repressed,STM0772,gpmA,NC_003197.2,836366,837131,-,gene_name
+E8XGB4,spy,spy,Periplasmic protein,STM474_1312,1.87,9.6787066152182799E-2,up_in_mutant_FNR_repressed,STM1308,spy,NC_003197.2,1388532,1389033,+,gene_name
+A0A0F6B9P3,ushB,ushB,CDP-diacylglycerol pyrophosphatase,STM14_4888,1.89,0.128429337651632,up_in_mutant_FNR_repressed,STM4064,ushB,NC_003197.2,4274584,4275354,+,gene_name
+P74869,rna,rna,RNaseI (Fragment),,1.91,6.6445103347556198E-2,up_in_mutant_FNR_repressed,STM0617,rna,NC_003197.2,679992,680798,-,gene_name
+A6T6Q5,glnH,glnH,Glutamine ABC transporter periplasmic-binding protein,KPN_00840,1.92,0.14468407253342,up_in_mutant_FNR_repressed,STM0830,glnH,NC_003197.2,896267,897024,-,gene_name
+E8XEG4,nuoI,nuoI,NADH-quinone oxidoreductase subunit I,STM474_2418,2.02,5.4118030641728897E-2,up_in_mutant_FNR_repressed,STM2321,nuoI,NC_003197.2,2430362,2430920,-,gene_name
+A0A0J1A2V9,DD95_2064,DD95_20640,Glutaredoxin,TJ38_01925,2.02,5.4375967147246303E-2,up_in_mutant_FNR_repressed,STM0872,grxA,NC_003197.2,945077,945350,-,product:glutaredoxin
+A0A0U1FIG9,phoC,phoC_1,Acid phosphatase,DT104_43131,2.0299999999999998,5.2493754791136799E-2,up_in_mutant_FNR_repressed,STM4249,aphA,NC_003197.2,4470688,4471412,+,product:acid phosphatase
+E8XI48,fumC,fumC,Fumarate hydratase class II,STM474_1476,2.2000000000000002,3.0602273584731401E-2,up_in_mutant_FNR_repressed,STM1469,fumC,NC_003197.2,1543884,1545395,+,gene_name
+A0A0H3N962,acnB,acnB,Aconitate hydratase B,SL1344_0159,2.3199999999999998,2.09852370379323E-2,up_in_mutant_FNR_repressed,STM0158,acnB,NC_003197.2,185843,188454,+,gene_name
+A0A0H3NKQ9,pps,pps,Phosphoenolpyruvate synthase,SL1344_1283,2.35,1.9164891922337599E-2,up_in_mutant_FNR_repressed,STM1349,pps,NC_003197.2,1427610,1430139,+,gene_name
+A0A0D6GC18,DD95_21055,DD95_21055,Phosphoenolpyruvate synthase,TJ38_02340,2.35,1.9164891922337599E-2,up_in_mutant_FNR_repressed,STM1349,pps,NC_003197.2,1427610,1430139,+,product:phosphoenolpyruvate synthase
+A0A0H3NPD8,eutL,eutL,Ethanolamine utilization protein EutL,SL1344_2419,2.4300000000000002,1.48471426995096E-2,up_in_mutant_FNR_repressed,STM2456,eutL,NC_003197.2,2565666,2566336,-,gene_name
+P63727,cybC,cybC,Soluble cytochrome b562,STM4439,2.4700000000000002,1.26218740350535E-2,up_in_mutant_FNR_repressed,STM4439,cybC,NC_003197.2,4683282,4683681,+,locus_tag
+A0A0H3NBP3,adhP,adhP,Alcohol dehydrogenase,SL1344_1497,2.48,1.2405417147450399E-2,up_in_mutant_FNR_repressed,STM1567,adhP,NC_003197.2,1647775,1648797,+,gene_name
+P40720,fumA,fumA,"Fumarate hydratase class I, aerobic",STM1468,2.4900000000000002,1.2066709780142199E-2,up_in_mutant_FNR_repressed,STM1468,fumA,NC_003197.2,1542178,1543824,+,locus_tag
+E8XL63,katG,katG,Catalase-peroxidase,STM474_4291,2.54,1.01673643215057E-2,up_in_mutant_FNR_repressed,STM4106,katG,NC_003197.2,4319437,4321776,+,gene_name
+A0A0H3NIZ0,ybeK,rihA,Pyrimidine-specific ribonucleoside hydrolase RihA,SL1344_0650,2.5499999999999998,2.41141427976563E-2,up_in_mutant_FNR_repressed,STM0661,ybeK,NC_003197.2,725561,726507,-,gene_name
+Q9L6L5,fadB,fadB,Fatty acid oxidation complex subunit alpha,STM3983,2.6,2.77652779701444E-2,up_in_mutant_FNR_repressed,STM3983,fadB,NC_003197.2,4189323,4191593,-,locus_tag
+E8XIC1,trxC,trxC,Thioredoxin,STM474_2762,2.63,1.36152187671446E-2,up_in_mutant_FNR_repressed,STM2649,trxC,NC_003197.2,2788647,2789076,+,gene_name
+Q8ZQ37,STM1123,STM1123,Putative periplasmic protein,STM1123,2.66,6.4421183795156899E-3,up_in_mutant_FNR_repressed,STM1123,,NC_003197.2,1207131,1207533,-,locus_tag
+A0A0F6BA74,lamB,lamB,Maltoporin,STM14_5087,2.69,4.38625162071812E-2,up_in_mutant_FNR_repressed,STM4231,lamB,NC_003197.2,4452083,4453452,+,gene_name
+A0A0U1H1L3,mdh,mdh_2,Malate dehydrogenase,DT104_33511,2.92,2.5172190024394599E-3,up_in_mutant_FNR_repressed,STM3359,mdh,NC_003197.2,3526683,3527727,-,gene_name
+A0A0H3NAU2,sucB,sucB,Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex,SL1344_0719,3.01,1.88739272067766E-3,up_in_mutant_FNR_repressed,STM0737,sucB,NC_003197.2,804553,805772,+,gene_name
+P37921,fimA,fimA,"Type-1 fimbrial protein, A chain",STM0543,3.01,1.88739272067766E-3,up_in_mutant_FNR_repressed,STM0543,fimA,NC_003197.2,604107,604675,+,locus_tag
+A0A0B7J4X5,traT,traT,Conjugative transfer surface exclusion protein,,3.05,1.5874976969027701E-3,up_in_mutant_FNR_repressed,PSLT103,traT,NC_003277.2,83209,83940,+,gene_name
+E8X8Z1,malE,malE,Maltodextrin-binding protein,STM474_4423,3.12,1.17184352522325E-3,up_in_mutant_FNR_repressed,STM4229,malE,NC_003197.2,4449344,4450603,-,gene_name
+A0A0F7J4L6,manX,manX_1,Mannose-specific enzyme IIAB,,3.14,4.7977749654189604E-3,up_in_mutant_FNR_repressed,STM1830,manX,NC_003197.2,1928333,1929498,+,gene_name
+Q8ZR46,STM0576,STM0576,"Putative transport protein, PTS system",STM0576,3.14,4.7977749654189604E-3,up_in_mutant_FNR_repressed,STM0576,,NC_003197.2,635934,636410,-,locus_tag
+A0A1S6L5B4,AX02_51140,AX02_51140,Chromosome partitioning protein ParB,,3.15,1.0373731537434601E-3,up_in_mutant_FNR_repressed,STM0993,mukE,NC_003197.2,1079501,1080212,+,product:chromosome partition
+A0A0F6AW65,parB,parB,Plasmid partition protein B,STM14_5576,3.15,1.0373731537434601E-3,up_in_mutant_FNR_repressed,PSLT053,parB,NC_003277.2,45013,45990,+,gene_name
+A0A0F6B076,icdA,icdA,Isocitrate dehydrogenase [NADP],STM14_1416,3.16,1.01720762768411E-3,up_in_mutant_FNR_repressed,STM1238,icdA,NC_003197.2,1324219,1325625,+,gene_name
+A0A0D6HUD8,acs,acs,Acetyl-coenzyme A synthetase,TJ38_19465,3.24,3.9941746612958302E-3,up_in_mutant_FNR_repressed,STM4275,acs,NC_003197.2,4513730,4515703,-,gene_name
+A0A0F7J5N8,putA,putA,Bifunctional protein PutA,A7B05_08365,3.29,5.3790340718054802E-4,up_in_mutant_FNR_repressed,STM1124,putA,NC_003197.2,1207585,1211547,-,gene_name
+A0A0F7DIZ5,mglB,mglB,Galactose ABC transporter substrate-binding protein,QS20_07100,3.32,4.8865714011219201E-4,up_in_mutant_FNR_repressed,STM2190,mglB,NC_003197.2,2286616,2287675,-,gene_name
+E8XAZ2,STM474_0787,STM474_0787,Fumarate hydratase,STM474_0787,3.37,4.1129210872859297E-4,up_in_mutant_FNR_repressed,STM0761,,NC_003197.2,824921,825473,-,product:fumarate hydratase
+A0A0D6H056,DD95_1918,DD95_19185,Fumarate hydratase,TJ38_12360,3.37,4.1129210872859297E-4,up_in_mutant_FNR_repressed,STM0761,,NC_003197.2,824921,825473,-,product:fumarate hydratase
+A0A0U1FPR5,eutK,eutK,Ethanolamine utilization protein EutK,DT104_25081,3.38,4.1004551045660499E-4,up_in_mutant_FNR_repressed,STM2455,eutK,NC_003197.2,2565159,2565666,-,gene_name
+E8XEQ4,ycdX,ycdX,Probable phosphatase YcdX,STM474_1131,3.38,3.7517050434706701E-4,up_in_mutant_FNR_repressed,STM1136,ycdX,NC_003197.2,1226065,1226814,+,gene_name
+A0A0F6B3A7,sbmC,sbmC,DNA gyrase inhibitor,STM14_2551,3.47,2.6102254691312798E-4,up_in_mutant_FNR_repressed,STM2061,sbmC,NC_003197.2,2135402,2135880,-,gene_name
+P37415,PSLT051; samB; p6919o065; p8934bo065; D645_p1130; pSLTBT_p063; pYT1_p058; D645_p14095,PSLT051,Recombination-promoting nuclease pSLT051,PSLT051,3.65,2.18049226162496E-3,up_in_mutant_FNR_repressed,PSLT051,samB,NC_003277.2,42455,43396,-,locus_tag
+A0A0H3NEC8,sucD,sucD,Succinate--CoA ligase [ADP-forming] subunit alpha,SL1344_0721,3.71,7.5001213447109606E-5,up_in_mutant_FNR_repressed,STM0739,sucD,NC_003197.2,807066,807949,+,gene_name
+A0A0F6AYN6,kgd,kgd,Alpha-ketoglutarate decarboxylase,STM14_0855,3.76,5.7864331599653003E-5,up_in_mutant_FNR_repressed,STM2654,kgtP,NC_003197.2,2794378,2795691,-,product:alpha-ketoglutarate
+A0A0J5HKI9,DD95_19180,DD95_19180,Fumarate hydratase,TI36_15695,3.8,4.9005028899762299E-5,up_in_mutant_FNR_repressed,STM0761,,NC_003197.2,824921,825473,-,product:fumarate hydratase
+A0A0U1GA92,ndk,ndk,Nucleoside diphosphate kinase,DT104_25781,3.81,4.7145135880162601E-5,up_in_mutant_FNR_repressed,STM2526,ndk,NC_003197.2,2660070,2660510,-,gene_name
+E5G830,sucA,sucA,Alpha ketoglutarate dehydrogenase (Fragment),,3.82,4.5364987806302102E-5,up_in_mutant_FNR_repressed,STM0736,sucA,NC_003197.2,801627,804549,+,gene_name
+O68883,gltA,gltA,Citrate synthase,STM0730,3.87,3.5342091156540698E-5,up_in_mutant_FNR_repressed,STM0730,gltA,NC_003197.2,795957,797303,-,locus_tag
+A0A0F6B4L3,eutN,eutN,Putative detox protein,STM14_3022,3.87,1.41746787100837E-4,up_in_mutant_FNR_repressed,STM2464,eutN,NC_003197.2,2574811,2575110,-,gene_name
+A0A0H3N950,sucC,sucC,Succinate--CoA ligase [ADP-forming] subunit beta,SL1344_0720,3.99,1.8877092564979799E-5,up_in_mutant_FNR_repressed,STM0738,sucC,NC_003197.2,805897,807080,+,gene_name
+A0A0F7J4V8,sdhA,sdhA,Succinate dehydrogenase flavoprotein subunit,T096_02290,4.05,1.3455002549213999E-5,up_in_mutant_FNR_repressed,STM0734,sdhA,NC_003197.2,798708,800491,+,gene_name
+A0A0F6B0E2,STM14_1485,STM14_1485,"Isocitrate dehydrogenase, NADP-dependent",STM14_1485,4.0999999999999996,1.0004509378413701E-5,up_in_mutant_FNR_repressed,STM1238,icdA,NC_003197.2,1324219,1325625,+,product:isocitrate dehydrogenase
+A0A0F7DI51,fumB,fumB_1,Fumarase B,,4.22,5.3608513835567998E-6,up_in_mutant_FNR_repressed,STM4300,fumB,NC_003197.2,4545381,4547067,-,gene_name
+Q4L1P9,mig,mig-5,Putative carbonic anhydrase Mig-5,,4.2300000000000004,5.3608513835567998E-6,up_in_mutant_FNR_repressed,STM0171,yadF,NC_003197.2,201410,202088,-,product:carbonic anhydrase
+E8XL81,sthA,sthA,Soluble pyridine nucleotide transhydrogenase,STM474_4309,4.29,3.7579532597753501E-6,up_in_mutant_FNR_repressed,STM4594,sthA,NC_003197.2,4852113,4852796,-,gene_name
+A0A0F7JDX8,udhA,udhA,Soluble pyridine nucleotide transhydrogenase,T096_18990,4.29,3.7579532597753501E-6,up_in_mutant_FNR_repressed,STM4126,udhA,NC_003197.2,4343993,4345408,-,gene_name
+A0A0F6B8I9,lldD,lldD,L-lactate dehydrogenase,STM14_4453,4.33,2.9170673420178702E-6,up_in_mutant_FNR_repressed,STM3694,lldD,NC_003197.2,3888334,3889539,+,gene_name
+A0A0H3NK44,eutA,eutA,Ethanolamine utilization protein,SL1344_2422,4.4400000000000004,4.5953161009748598E-6,up_in_mutant_FNR_repressed,STM2459,eutA,NC_003197.2,2568623,2570040,-,gene_name
+A0A0F6AYN5,sdhB,sdhB,Succinate dehydrogenase iron-sulfur subunit,STM14_0854,4.49,1.24784611351149E-6,up_in_mutant_FNR_repressed,STM0735,sdhB,NC_003197.2,800494,801224,+,gene_name
+E8XFS0,eutG,eutG,Putative transport protein,STM474_2564,4.76,2.3978038591702499E-7,up_in_mutant_FNR_repressed,STM2461,eutG,NC_003197.2,2571369,2572569,-,gene_name
+A0A0H3NXF6,SL1344_P1_0061,SL1344_P1_0061,Putative carbonic anhydrase,SL1344_P1_0061,4.76,2.3978038591702499E-7,up_in_mutant_FNR_repressed,STM0171,yadF,NC_003197.2,201410,202088,-,product:carbonic anhydrase
+A0A0U1IK19,hmpA,hmpA,Flavohemoprotein,DT104_26081,4.8,2.0567931196586099E-7,up_in_mutant_FNR_repressed,STM2556,hmpA,NC_003197.2,2695248,2696450,+,gene_name
+A0A0D6FUD5,DD95_03815,DD95_03815,Glutamate dehydrogenase,TJ38_15125,4.8499999999999996,1.4000189307861201E-7,up_in_mutant_FNR_repressed,STM1299,gdhA,NC_003197.2,1378627,1379985,-,product:glutamate dehydrogenase
+A0A0F6B295,STM14_2170,STM14_2170,Glutamate dehydrogenase,STM14_2170,4.87,1.2871272545567101E-7,up_in_mutant_FNR_repressed,STM1299,gdhA,NC_003197.2,1378627,1379985,-,product:glutamate dehydrogenase
+A0A0J0WCD6,DD95_08930,DD95_08930,Amino acid transporter,TI36_01695,4.96,7.4824479945334601E-8,up_in_mutant_FNR_repressed,STM0150,aroP,NC_003197.2,173380,174812,-,product:amino acid transporter
+A0A0H3N9H9,ybeJ,gltI,ABC transporter periplasmic binding protein (Glutamate/aspartate?),SL1344_0654,4.96,7.4824479945334601E-8,up_in_mutant_FNR_repressed,STM0303,ybeJ,NC_003197.2,346968,347796,+,gene_name
+A0A0F7J8V2,eutD,eutD,Ethanolamine utilization protein EutD,A7B05_12230,4.99,6.6032723289311006E-8,up_in_mutant_FNR_repressed,STM2466,eutD,NC_003197.2,2575542,2576566,-,gene_name
+A0A0F7J8R4,eutQ,eutQ,Ethanolamine utilization acetate kinase EutQ,T096_11100,5.05,4.9184826877990398E-8,up_in_mutant_FNR_repressed,STM2468,eutQ,NC_003197.2,2577355,2578060,-,gene_name
+A0A0D6F9U9,DD95_01455,DD95_01455,Ethanolamine ammonia-lyase,TJ38_24240,5.35,5.1731424757929897E-9,up_in_mutant_FNR_repressed,STM2457,eutC,NC_003197.2,2566335,2567245,-,product:ethanolamine ammonia-lyase
+A6TC73,eutB,eutB,"Ethanolamine ammonia-lyase, heavy chain",KPN_02784,5.55,1.0535708601840599E-9,up_in_mutant_FNR_repressed,STM2458,eutB,NC_003197.2,2567250,2568624,-,gene_name
+E8XFS8,eutP,eutP,Putative ethanolamine utilization protein,STM474_2572,5.59,8.4353224405475699E-10,up_in_mutant_FNR_repressed,STM2469,eutP,NC_003197.2,2578022,2578510,-,gene_name
+A0A0U1GL38,eutE,eutE,Ethanolamine utilization protein EutE,DT104_25161,5.64,6.7009064963485798E-10,up_in_mutant_FNR_repressed,STM2463,eutE,NC_003197.2,2573396,2574813,-,gene_name
+A0A0F7JBX9,eutM,eutM,Carboxysome shell protein,T096_11085,6.18,1.3901768625146401E-11,up_in_mutant_FNR_repressed,STM2465,eutM,NC_003197.2,2575211,2575513,-,gene_name
+A0A0W5WXW4,DD95_24425,DD95_24425,Peptidase T (Fragment),DD95_24425,-2.74,4.1429424125862299E-2,down_in_mutant_FNR_activated,STM1227,pepT,NC_003197.2,1313395,1314636,+,manual_curation
+A0A0T9WB28,atpA_2,atpA_2,ATP synthase subunit alpha,ERS157243_05162,-2.73,1.8550847745531701E-2,down_in_mutant_FNR_activated,STM3867,atpA,NC_003197.2,4076447,4077995,-,manual_curation
+A0A0U1GBG3,qmcA,qmcA,Putative stomatin/prohibitin-family protease,DT104_05441,-2.08,0.165592643764127,down_in_mutant_FNR_activated,STM4363,hflK,NC_003197.2,4606453,4607725,+,manual_curation
+A0A1L5SAY3,ompC_2,,Outer membrane porin protein C (Fragment),,2.12,4.0060338853781602E-2,up_in_mutant_FNR_repressed,STM2267,ompC,NC_003197.2,2365442,2366750,-,manual_curation
+A0A2Z5HT82,CPT_Skate_069,CPT_Skate_069,Single-stranded DNA binding protein,,2.4900000000000002,1.2186614466721301E-2,up_in_mutant_FNR_repressed,STM4256,ssb,NC_003197.2,4476202,4476832,+,manual_curation
+A0A385EHJ2,vst472_62,vst472_62,Single stranded DNA-binding protein,,2.4900000000000002,1.2186614466721301E-2,up_in_mutant_FNR_repressed,STM4256,ssb,NC_003197.2,4476202,4476832,+,manual_curation
+A0A0K6RWF8,DD95_01400,DD95_01400,Ethanolamine utilization protein EutP,TJ38_24295,5.59,8.4353224405475699E-10,up_in_mutant_FNR_repressed,STM2469,eutP,NC_003197.2,2578022,2578510,-,manual_curation
+A0A0D6F9Y6,DD95_01425,DD95_01425,Ethanolamine utilization protein EutN,TJ38_24270,5.73,4.0528211090159798E-10,up_in_mutant_FNR_repressed,STM2464,eutN,NC_003197.2,2574811,2575110,-,manual_curation
