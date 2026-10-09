@@ -19,10 +19,10 @@
 
 Identifying transcription factor binding sites (TFBS) is essential for mapping bacterial regulatory
 networks — but experimental methods (EMSA, DNase footprinting, ChIP) are slow and costly. **D-Sites**
-scans entire genomes in minutes and ranks every candidate site with a **calibrated probability score**,
+scans entire genomes in minutes and ranks every candidate site with an **interpretable probability score**,
 so you can trade sensitivity against precision with a single threshold.
 
-| 🧬 Hybrid features | 🎯 Calibrated scores | 🌍 Cross-genome | ⚡ Fast & reproducible |
+| 🧬 Hybrid features | 🎯 Ranked probability scores | 🌍 Cross-genome | ⚡ Fast & reproducible |
 |---|---|---|---|
 | PWM log-odds + GC + Shannon entropy + **DNA shape** (minor groove width, propeller twist, roll, helical twist) from the published [DNAshape](https://doi.org/10.1093/nar/gkt437) pentamer table (Zhou et al., 2013) | Random Forest probabilities; operating threshold selected from **out-of-bag** predictions — never tuned on test data | A model trained on *E. coli* FNR sites (RegulonDB) transfers directly to *Salmonella* | Seeded end-to-end (`--seed 42` default), version-pinned dependencies, multi-core `joblib` parallelization |
 
@@ -73,7 +73,7 @@ FASTA + GFF3 + motif (JASPAR/MEME)
         ▼  promoter windows (−300/+50 per CDS, ALL contigs incl. plasmids)
 PWM log-odds ──► 11-feature vectors ◄── DNAshape pentamer features (MGW·ProT·Roll·HelT)
         │
-        ▼  Random Forest (seeded, OOB-calibrated threshold)
+        ▼  Random Forest (seeded, OOB-selected threshold)
 ranked binding-site probabilities per window  ──►  CSVs + plots
 ```
 
