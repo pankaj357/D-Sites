@@ -1,0 +1,43 @@
+# OS / editor artifacts
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Revision analysis: regenerable intermediates (see Revision/results/README.md for regeneration commands)
+evaluation/results/cache/
+evaluation/results/logs/
+evaluation/results/*.npz
+evaluation/results/*.csv.gz
+evaluation/results/smoke_test/
+
+# Local documents not for publication (copyright / private)
+D-Sites_Manuscript-8.docx
+Decision_Dsites.pdf
+FNR_paper.pdf
+# Word lock files
+~\$*
+
+# Journal proofs (copyright)
+Original/EVB-25-0116_Proof_hi.pdf
+
+
+# Not for public repository (manuscript artifacts; package distributed via PyPI source below)
+Original/
+evaluation/figures/
+evaluation/*.docx
+evaluation/Response_to_Reviewers.md
+evaluation/PUSH_PLAN.md
+evaluation/REVISION_STRATEGY.md
+
+# Internal revision-process files (not for public repo)
+evaluation/results/CHANGELOG.md
+evaluation/scripts/revise_manuscript_*.py
+evaluation/scripts/make_manuscript_figures.py
+evaluation/scripts/verify_pqt_*

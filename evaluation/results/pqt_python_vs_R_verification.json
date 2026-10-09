@@ -1,0 +1,55 @@
+{
+  "n_sequences": 2500,
+  "lengths": [
+    13,
+    22
+  ],
+  "n_reverse_complements": 500,
+  "seed": 42,
+  "gate": 1e-06,
+  "dnashaper_version": "1.38.0",
+  "dsites_version": "1.3.0",
+  "per_property": {
+    "MGW": {
+      "max_abs_diff_per_position": 0.0,
+      "n_values": 33758,
+      "PASSED": true
+    },
+    "ProT": {
+      "max_abs_diff_per_position": 0.0,
+      "n_values": 33758,
+      "PASSED": true
+    },
+    "Roll": {
+      "max_abs_diff_per_position": 0.0,
+      "n_values": 36258,
+      "PASSED": true
+    },
+    "HelT": {
+      "max_abs_diff_per_position": 0.0,
+      "n_values": 36258,
+      "PASSED": true
+    }
+  },
+  "per_property_stats": {
+    "MGW": {
+      "max_abs_diff_mean_sd": 0.0,
+      "PASSED": true
+    },
+    "ProT": {
+      "max_abs_diff_mean_sd": 0.0,
+      "PASSED": true
+    },
+    "Roll": {
+      "max_abs_diff_mean_sd": 0.0,
+      "PASSED": true
+    },
+    "HelT": {
+      "max_abs_diff_mean_sd": 0.0,
+      "PASSED": true
+    }
+  },
+  "GATE_PASSED": true,
+  "wall_seconds": 17.2,
+  "note": "Strand behavior: the pipeline computes shape features on each strand's sequence separately (window seq and its revcomp are independent inputs); 500 reverse complements are included in this test set."
+}

@@ -1,0 +1,1473 @@
+{
+  "purpose": "fnr_operon_enrichment.py \u2014 Phase 4: FNR operon-level enrichment analysis",
+  "dep_mapping": {
+    "n_dep_rows_file": 137,
+    "n_dep_unique_genes": 124,
+    "n_dep_genes_mapped": 124,
+    "n_dep_genes_unmapped": 0,
+    "unmapped_tags": [],
+    "n_dep_operons": 109,
+    "n_dep_operons_activated": 49,
+    "n_dep_operons_repressed": 60,
+    "n_dep_operons_mixed": 0,
+    "n_dep_genes_sharing_operon": 15,
+    "dep_genes_per_operon_hist": {
+      "1": 101,
+      "2": 4,
+      "3": 2,
+      "4": 1,
+      "5": 1
+    }
+  },
+  "prediction_set_meta": {
+    "fimo_topN_capped": true,
+    "fimo_topN_requested": 68729,
+    "fimo_topN_effective": 45200,
+    "fimo_total_reported": 45200
+  },
+  "n_operons": 2750,
+  "n_genes_gene_level": 4554,
+  "operon_level": {
+    "dsites_full": {
+      "description": "prob >= OOB-F1 cutoff (n=39482)",
+      "n_predictions": 39482,
+      "n_operons_hit": 2745,
+      "background_hit_rate": 0.9981818181818182,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 109,
+          "table_2x2": [
+            [
+              109,
+              0
+            ],
+            [
+              2636,
+              5
+            ]
+          ],
+          "background_rate": 0.9981818181818182,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0018214936247722,
+          "fold_ci95": [
+            1.000158793722378,
+            1.0034869576592051
+          ],
+          "odds_ratio": 0.45685567987862696,
+          "or_ci95": [
+            0.02510210902942405,
+            8.314724152966976
+          ],
+          "fisher_p_greater": 0.8167954031538152,
+          "hypergeom_sf": 0.8167954031538152,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 49,
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              2696,
+              5
+            ]
+          ],
+          "background_rate": 0.9981818181818182,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0018214936247722,
+          "fold_ci95": [
+            1.000195733166233,
+            1.0034498966631396
+          ],
+          "odds_ratio": 0.20192842573706657,
+          "or_ci95": [
+            0.011014186480492976,
+            3.702051821336603
+          ],
+          "fisher_p_greater": 0.9139675368020328,
+          "hypergeom_sf": 0.9139675368020328,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 60,
+          "table_2x2": [
+            [
+              60,
+              0
+            ],
+            [
+              2685,
+              5
+            ]
+          ],
+          "background_rate": 0.9981818181818182,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0018214936247722,
+          "fold_ci95": [
+            1.0001890843094425,
+            1.0034565671965054
+          ],
+          "odds_ratio": 0.24781232545149878,
+          "or_ci95": [
+            0.013549749839997944,
+            4.532257006280557
+          ],
+          "fisher_p_greater": 0.8954939724962381,
+          "hypergeom_sf": 0.8954939724962381,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              60,
+              0
+            ]
+          ],
+          "fisher_p_twosided": 1.0,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    },
+    "dsites_top5pct": {
+      "description": "top 5% of scored windows (n=68729)",
+      "n_predictions": 68729,
+      "n_operons_hit": 2750,
+      "background_hit_rate": 1.0,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 109,
+          "table_2x2": [
+            [
+              109,
+              0
+            ],
+            [
+              2641,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.04145371947756956,
+          "or_ci95": [
+            0.0008186652508068579,
+            2.0990396952006996
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 49,
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              2701,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.018323153803442533,
+          "or_ci95": [
+            0.00035990975928393255,
+            0.9328392927510122
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 60,
+          "table_2x2": [
+            [
+              60,
+              0
+            ],
+            [
+              2690,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.022486526667905595,
+          "or_ci95": [
+            0.00044248166441360274,
+            1.142745388685274
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              60,
+              0
+            ]
+          ],
+          "fisher_p_twosided": 1.0,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    },
+    "dsites_top1pct": {
+      "description": "ADDED stringent set: top 1.0% of scored windows (n=13895, prob>=0.7000)",
+      "n_predictions": 13895,
+      "n_operons_hit": 2552,
+      "background_hit_rate": 0.928,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 102,
+          "table_2x2": [
+            [
+              102,
+              7
+            ],
+            [
+              2450,
+              191
+            ]
+          ],
+          "background_rate": 0.928,
+          "group_rate": 0.9357798165137615,
+          "fold_enrichment": 1.0083834229674153,
+          "fold_ci95": [
+            0.9588970348121142,
+            1.0604236855469262
+          ],
+          "odds_ratio": 1.1359766763848396,
+          "or_ci95": [
+            0.5208240630894176,
+            2.477694677998772
+          ],
+          "fisher_p_greater": 0.46753383287215444,
+          "hypergeom_sf": 0.46753383287215444,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 48,
+          "table_2x2": [
+            [
+              48,
+              1
+            ],
+            [
+              2504,
+              197
+            ]
+          ],
+          "background_rate": 0.928,
+          "group_rate": 0.9795918367346939,
+          "fold_enrichment": 1.0555946516537649,
+          "fold_ci95": [
+            1.0124046086166258,
+            1.1006272187190183
+          ],
+          "odds_ratio": 3.7763578274760383,
+          "or_ci95": [
+            0.5184792512082919,
+            27.505205671982484
+          ],
+          "fisher_p_greater": 0.12111616492165651,
+          "hypergeom_sf": 0.12111616492165651,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 54,
+          "table_2x2": [
+            [
+              54,
+              6
+            ],
+            [
+              2498,
+              192
+            ]
+          ],
+          "background_rate": 0.928,
+          "group_rate": 0.9,
+          "fold_enrichment": 0.9698275862068966,
+          "fold_ci95": [
+            0.8908046288642549,
+            1.0558606415944245
+          ],
+          "odds_ratio": 0.6917534027221778,
+          "or_ci95": [
+            0.2938596986168106,
+            1.62840557051581
+          ],
+          "fisher_p_greater": 0.8633982242800033,
+          "hypergeom_sf": 0.8633982242800033,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              48,
+              1
+            ],
+            [
+              54,
+              6
+            ]
+          ],
+          "fisher_p_twosided": 0.12633132068890043,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    },
+    "dsites_top0.1pct": {
+      "description": "ADDED stringent set: top 0.1% of scored windows (n=1408, prob>=0.8667)",
+      "n_predictions": 1408,
+      "n_operons_hit": 940,
+      "background_hit_rate": 0.3418181818181818,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 42,
+          "table_2x2": [
+            [
+              42,
+              67
+            ],
+            [
+              898,
+              1743
+            ]
+          ],
+          "background_rate": 0.3418181818181818,
+          "group_rate": 0.3853211009174312,
+          "fold_enrichment": 1.1272691782158892,
+          "fold_ci95": [
+            0.8840905978090321,
+            1.4373366296448402
+          ],
+          "odds_ratio": 1.2167337034205365,
+          "or_ci95": [
+            0.8204573063370834,
+            1.8044094355730167
+          ],
+          "fisher_p_greater": 0.19040744212348887,
+          "hypergeom_sf": 0.19040744212348887,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 20,
+          "table_2x2": [
+            [
+              20,
+              29
+            ],
+            [
+              920,
+              1781
+            ]
+          ],
+          "background_rate": 0.3418181818181818,
+          "group_rate": 0.40816326530612246,
+          "fold_enrichment": 1.194094659140252,
+          "fold_ci95": [
+            0.8488820386500355,
+            1.6796939858155104
+          ],
+          "odds_ratio": 1.3350824587706147,
+          "or_ci95": [
+            0.751089817305081,
+            2.3731451693918904
+          ],
+          "fisher_p_greater": 0.20032115248507026,
+          "hypergeom_sf": 0.20032115248507026,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 22,
+          "table_2x2": [
+            [
+              22,
+              38
+            ],
+            [
+              918,
+              1772
+            ]
+          ],
+          "background_rate": 0.3418181818181818,
+          "group_rate": 0.36666666666666664,
+          "fold_enrichment": 1.072695035460993,
+          "fold_ci95": [
+            0.7660575519198735,
+            1.5020733575680707
+          ],
+          "odds_ratio": 1.1175323930741887,
+          "or_ci95": [
+            0.657062941824402,
+            1.9006986546866953
+          ],
+          "fisher_p_greater": 0.3877197696190088,
+          "hypergeom_sf": 0.3877197696190088,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              20,
+              29
+            ],
+            [
+              22,
+              38
+            ]
+          ],
+          "fisher_p_twosided": 0.6957072794179924,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    },
+    "fimo_p1e-4": {
+      "description": "FIMO p<1e-4 (n=819)",
+      "n_predictions": 819,
+      "n_operons_hit": 449,
+      "background_hit_rate": 0.16327272727272726,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 24,
+          "table_2x2": [
+            [
+              24,
+              85
+            ],
+            [
+              425,
+              2216
+            ]
+          ],
+          "background_rate": 0.16327272727272726,
+          "group_rate": 0.22018348623853212,
+          "fold_enrichment": 1.3485625549130587,
+          "fold_ci95": [
+            0.9372187211213386,
+            1.9404445552877356
+          ],
+          "odds_ratio": 1.4722214532871973,
+          "or_ci95": [
+            0.9249433708387177,
+            2.343317521756695
+          ],
+          "fisher_p_greater": 0.06954397803653053,
+          "hypergeom_sf": 0.06954397803653053,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 17,
+          "table_2x2": [
+            [
+              17,
+              32
+            ],
+            [
+              432,
+              2269
+            ]
+          ],
+          "background_rate": 0.16327272727272726,
+          "group_rate": 0.3469387755102041,
+          "fold_enrichment": 2.1249034134812055,
+          "fold_ci95": [
+            1.433281477886144,
+            3.150263633688536
+          ],
+          "odds_ratio": 2.7902922453703702,
+          "or_ci95": [
+            1.5356845227798512,
+            5.069876461657971
+          ],
+          "fisher_p_greater": 0.0012184183841257394,
+          "hypergeom_sf": 0.0012184183841257394,
+          "significant_005": true
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 7,
+          "table_2x2": [
+            [
+              7,
+              53
+            ],
+            [
+              442,
+              2248
+            ]
+          ],
+          "background_rate": 0.16327272727272726,
+          "group_rate": 0.11666666666666667,
+          "fold_enrichment": 0.714550853749072,
+          "fold_ci95": [
+            0.3543201702459137,
+            1.441021328927339
+          ],
+          "odds_ratio": 0.6717322632971912,
+          "or_ci95": [
+            0.3034068871546935,
+            1.4871917964219052
+          ],
+          "fisher_p_greater": 0.8815119942977714,
+          "hypergeom_sf": 0.8815119942977714,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              17,
+              32
+            ],
+            [
+              7,
+              53
+            ]
+          ],
+          "fisher_p_twosided": 0.005156679855070507,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    },
+    "fimo_topN": {
+      "description": "FIMO top-N by p-value, N=68729 = |top5pct| -- CAPPED at 45200 reported matches (p<1e-2)",
+      "n_predictions": 45200,
+      "n_operons_hit": 2746,
+      "background_hit_rate": 0.9985454545454545,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 109,
+          "group_hits": 109,
+          "table_2x2": [
+            [
+              109,
+              0
+            ],
+            [
+              2637,
+              4
+            ]
+          ],
+          "background_rate": 0.9985454545454545,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.001456664238893,
+          "fold_ci95": [
+            0.9999701932097707,
+            1.0029453449299985
+          ],
+          "odds_ratio": 0.37364928909952605,
+          "or_ci95": [
+            0.019990874047994368,
+            6.983876288220038
+          ],
+          "fisher_p_greater": 0.8505575187942269,
+          "hypergeom_sf": 0.8505575187942269,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 49,
+          "group_hits": 49,
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              2697,
+              4
+            ]
+          ],
+          "background_rate": 0.9985454545454545,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.001456664238893,
+          "fold_ci95": [
+            1.0000032141651194,
+            1.0029122268229935
+          ],
+          "odds_ratio": 0.16515291936978685,
+          "or_ci95": [
+            0.00877215849487003,
+            3.1093244373450446
+          ],
+          "fisher_p_greater": 0.9305728053609129,
+          "hypergeom_sf": 0.9305728053609129,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 60,
+          "group_hits": 60,
+          "table_2x2": [
+            [
+              60,
+              0
+            ],
+            [
+              2686,
+              4
+            ]
+          ],
+          "background_rate": 0.9985454545454545,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.001456664238893,
+          "fold_ci95": [
+            0.9999972705994202,
+            1.0029181877139737
+          ],
+          "odds_ratio": 0.20268006700167504,
+          "or_ci95": [
+            0.010791333719029413,
+            3.806685126173469
+          ],
+          "fisher_p_greater": 0.9154975608617535,
+          "hypergeom_sf": 0.9154975608617535,
+          "significant_005": false
+        },
+        "activated_vs_repressed": {
+          "table_2x2": [
+            [
+              49,
+              0
+            ],
+            [
+              60,
+              0
+            ]
+          ],
+          "fisher_p_twosided": 1.0,
+          "note": "two-sided Fisher test of hit-rate difference between FNR-activated and FNR-repressed DEP operons"
+        }
+      }
+    }
+  },
+  "gene_level": {
+    "dsites_full": {
+      "description": "prob >= OOB-F1 cutoff (n=39482)",
+      "n_predictions": 39482,
+      "n_genes_hit": 4539,
+      "n_genes_total": 4554,
+      "background_hit_rate": 0.9967061923583662,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 124,
+          "table_2x2": [
+            [
+              124,
+              0
+            ],
+            [
+              4415,
+              15
+            ]
+          ],
+          "background_rate": 0.9967061923583662,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0033046926635822,
+          "fold_ci95": [
+            1.0015840342776694,
+            1.0050283070323978
+          ],
+          "odds_ratio": 0.8740799456460197,
+          "or_ci95": [
+            0.052004670859161495,
+            14.691290969798626
+          ],
+          "fisher_p_greater": 0.6605103241388464,
+          "hypergeom_sf": 0.6605103241388464,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 51,
+          "table_2x2": [
+            [
+              51,
+              0
+            ],
+            [
+              4488,
+              15
+            ]
+          ],
+          "background_rate": 0.9967061923583662,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0033046926635822,
+          "fold_ci95": [
+            1.0016119516157729,
+            1.0050002944722385
+          ],
+          "odds_ratio": 0.35568675504065944,
+          "or_ci95": [
+            0.020999011139355754,
+            6.024715491209341
+          ],
+          "fisher_p_greater": 0.8443454321959597,
+          "hypergeom_sf": 0.8443454321959597,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 73,
+          "table_2x2": [
+            [
+              73,
+              0
+            ],
+            [
+              4466,
+              15
+            ]
+          ],
+          "background_rate": 0.9967061923583662,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0033046926635822,
+          "fold_ci95": [
+            1.0016036340076524,
+            1.0050086402872163
+          ],
+          "odds_ratio": 0.5101309750363819,
+          "or_ci95": [
+            0.030236197606316337,
+            8.60669106214622
+          ],
+          "fisher_p_greater": 0.784450034755198,
+          "hypergeom_sf": 0.784450034755198,
+          "significant_005": false
+        }
+      }
+    },
+    "dsites_top5pct": {
+      "description": "top 5% of scored windows (n=68729)",
+      "n_predictions": 68729,
+      "n_genes_hit": 4554,
+      "n_genes_total": 4554,
+      "background_hit_rate": 1.0,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 124,
+          "table_2x2": [
+            [
+              124,
+              0
+            ],
+            [
+              4430,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.02810066583907008,
+          "or_ci95": [
+            0.000555297661296312,
+            1.4220254750500692
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 51,
+          "table_2x2": [
+            [
+              51,
+              0
+            ],
+            [
+              4503,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.011435550127678473,
+          "or_ci95": [
+            0.00022472347144112076,
+            0.5819232227235784
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 73,
+          "table_2x2": [
+            [
+              73,
+              0
+            ],
+            [
+              4481,
+              0
+            ]
+          ],
+          "background_rate": 1.0,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0,
+          "fold_ci95": [
+            1.0,
+            1.0
+          ],
+          "odds_ratio": 0.01640075867455093,
+          "or_ci95": [
+            0.0003232133768746094,
+            0.8322207691459818
+          ],
+          "fisher_p_greater": 1.0,
+          "hypergeom_sf": 1.0,
+          "significant_005": false
+        }
+      }
+    },
+    "dsites_top1pct": {
+      "description": "ADDED stringent set: top 1.0% of scored windows (n=13895, prob>=0.7000)",
+      "n_predictions": 13895,
+      "n_genes_hit": 4070,
+      "n_genes_total": 4554,
+      "background_hit_rate": 0.893719806763285,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 113,
+          "table_2x2": [
+            [
+              113,
+              11
+            ],
+            [
+              3957,
+              473
+            ]
+          ],
+          "background_rate": 0.893719806763285,
+          "group_rate": 0.9112903225806451,
+          "fold_enrichment": 1.0196599825632084,
+          "fold_ci95": [
+            0.9642708849379045,
+            1.0782307091100816
+          ],
+          "odds_ratio": 1.2279504675259034,
+          "or_ci95": [
+            0.6563819761921963,
+            2.297233021912785
+          ],
+          "fisher_p_greater": 0.32013774217531704,
+          "hypergeom_sf": 0.32013774217531704,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 48,
+          "table_2x2": [
+            [
+              48,
+              3
+            ],
+            [
+              4022,
+              481
+            ]
+          ],
+          "background_rate": 0.893719806763285,
+          "group_rate": 0.9411764705882353,
+          "fold_enrichment": 1.053100158982512,
+          "fold_ci95": [
+            0.9825393573248357,
+            1.128728265775048
+          ],
+          "odds_ratio": 1.91347588264545,
+          "or_ci95": [
+            0.593725258058476,
+            6.166808475419744
+          ],
+          "fisher_p_greater": 0.1935477440848062,
+          "hypergeom_sf": 0.1935477440848062,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 65,
+          "table_2x2": [
+            [
+              65,
+              8
+            ],
+            [
+              4005,
+              476
+            ]
+          ],
+          "background_rate": 0.893719806763285,
+          "group_rate": 0.8904109589041096,
+          "fold_enrichment": 0.9962976675305443,
+          "fold_ci95": [
+            0.9186786966732703,
+            1.080474648994529
+          ],
+          "odds_ratio": 0.9656679151061174,
+          "or_ci95": [
+            0.46050606517929243,
+            2.0249777207653765
+          ],
+          "fisher_p_greater": 0.6287314959295083,
+          "hypergeom_sf": 0.6287314959295083,
+          "significant_005": false
+        }
+      }
+    },
+    "dsites_top0.1pct": {
+      "description": "ADDED stringent set: top 0.1% of scored windows (n=1408, prob>=0.8667)",
+      "n_predictions": 1408,
+      "n_genes_hit": 1286,
+      "n_genes_total": 4554,
+      "background_hit_rate": 0.282389108476065,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 39,
+          "table_2x2": [
+            [
+              39,
+              85
+            ],
+            [
+              1247,
+              3183
+            ]
+          ],
+          "background_rate": 0.282389108476065,
+          "group_rate": 0.31451612903225806,
+          "fold_enrichment": 1.1137686248933927,
+          "fold_ci95": [
+            0.8552809947070518,
+            1.450377779318953
+          ],
+          "odds_ratio": 1.171159016934761,
+          "or_ci95": [
+            0.797163967338213,
+            1.7206164592806548
+          ],
+          "fisher_p_greater": 0.23839658206959435,
+          "hypergeom_sf": 0.23839658206959435,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 18,
+          "table_2x2": [
+            [
+              18,
+              33
+            ],
+            [
+              1268,
+              3235
+            ]
+          ],
+          "background_rate": 0.282389108476065,
+          "group_rate": 0.35294117647058826,
+          "fold_enrichment": 1.249839904857744,
+          "fold_ci95": [
+            0.8594047683270063,
+            1.817653154072832
+          ],
+          "odds_ratio": 1.3915973616289075,
+          "or_ci95": [
+            0.7807348997510863,
+            2.4804107226536747
+          ],
+          "fisher_p_greater": 0.1657506547880923,
+          "hypergeom_sf": 0.1657506547880923,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 21,
+          "table_2x2": [
+            [
+              21,
+              52
+            ],
+            [
+              1265,
+              3216
+            ]
+          ],
+          "background_rate": 0.282389108476065,
+          "group_rate": 0.2876712328767123,
+          "fold_enrichment": 1.0187051279319967,
+          "fold_ci95": [
+            0.7078968031526517,
+            1.4659765845151895
+          ],
+          "odds_ratio": 1.0266950440863485,
+          "or_ci95": [
+            0.6159574600057935,
+            1.7113238851617356
+          ],
+          "fisher_p_greater": 0.5045531548052158,
+          "hypergeom_sf": 0.5045531548052158,
+          "significant_005": false
+        }
+      }
+    },
+    "fimo_p1e-4": {
+      "description": "FIMO p<1e-4 (n=819)",
+      "n_predictions": 819,
+      "n_genes_hit": 628,
+      "n_genes_total": 4554,
+      "background_hit_rate": 0.13790074659639878,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 20,
+          "table_2x2": [
+            [
+              20,
+              104
+            ],
+            [
+              608,
+              3822
+            ]
+          ],
+          "background_rate": 0.13790074659639878,
+          "group_rate": 0.16129032258064516,
+          "fold_enrichment": 1.1696116704335318,
+          "fold_ci95": [
+            0.777684532261621,
+            1.7590570505960768
+          ],
+          "odds_ratio": 1.2088815789473684,
+          "or_ci95": [
+            0.7434493966348056,
+            1.965694879211992
+          ],
+          "fisher_p_greater": 0.25726147164318625,
+          "hypergeom_sf": 0.25726147164318625,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 13,
+          "table_2x2": [
+            [
+              13,
+              38
+            ],
+            [
+              615,
+              3888
+            ]
+          ],
+          "background_rate": 0.13790074659639878,
+          "group_rate": 0.2549019607843137,
+          "fold_enrichment": 1.8484451105282875,
+          "fold_ci95": [
+            1.1495801887216113,
+            2.9721713719123177
+          ],
+          "odds_ratio": 2.162772785622593,
+          "or_ci95": [
+            1.1455780871403967,
+            4.083166546861897
+          ],
+          "fisher_p_greater": 0.018157954007927062,
+          "hypergeom_sf": 0.018157954007927062,
+          "significant_005": true
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 7,
+          "table_2x2": [
+            [
+              7,
+              66
+            ],
+            [
+              621,
+              3860
+            ]
+          ],
+          "background_rate": 0.13790074659639878,
+          "group_rate": 0.0958904109589041,
+          "fold_enrichment": 0.6953581711892504,
+          "fold_ci95": [
+            0.34249513904892825,
+            1.411765981795682
+          ],
+          "odds_ratio": 0.65924949982921,
+          "or_ci95": [
+            0.30108750800388195,
+            1.4434670701099297
+          ],
+          "fisher_p_greater": 0.8938021667892919,
+          "hypergeom_sf": 0.8938021667892919,
+          "significant_005": false
+        }
+      }
+    },
+    "fimo_topN": {
+      "description": "FIMO top-N by p-value, N=68729 = |top5pct| -- CAPPED at 45200 reported matches (p<1e-2)",
+      "n_predictions": 45200,
+      "n_genes_hit": 4547,
+      "n_genes_total": 4554,
+      "background_hit_rate": 0.9984628897672376,
+      "groups": {
+        "DEP_all": {
+          "group": "DEP_all",
+          "group_size": 124,
+          "group_hits": 124,
+          "table_2x2": [
+            [
+              124,
+              0
+            ],
+            [
+              4423,
+              7
+            ]
+          ],
+          "background_rate": 0.9984628897672376,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0015394765779635,
+          "fold_ci95": [
+            1.000366853421924,
+            1.002713474274814
+          ],
+          "odds_ratio": 0.422177009155646,
+          "or_ci95": [
+            0.023977739479364567,
+            7.4332873293996515
+          ],
+          "fisher_p_greater": 0.824173769996033,
+          "hypergeom_sf": 0.824173769996033,
+          "significant_005": false
+        },
+        "DEP_activated": {
+          "group": "DEP_activated",
+          "group_size": 51,
+          "group_hits": 51,
+          "table_2x2": [
+            [
+              51,
+              0
+            ],
+            [
+              4496,
+              7
+            ]
+          ],
+          "background_rate": 0.9984628897672376,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0015394765779635,
+          "fold_ci95": [
+            1.0003858671399015,
+            1.0026944163174414
+          ],
+          "odds_ratio": 0.17180028911375514,
+          "or_ci95": [
+            0.009683487139430135,
+            3.0480072844199384
+          ],
+          "fisher_p_greater": 0.9241441978694899,
+          "hypergeom_sf": 0.9241441978694899,
+          "significant_005": false
+        },
+        "DEP_repressed": {
+          "group": "DEP_repressed",
+          "group_size": 73,
+          "group_hits": 73,
+          "table_2x2": [
+            [
+              73,
+              0
+            ],
+            [
+              4474,
+              7
+            ]
+          ],
+          "background_rate": 0.9984628897672376,
+          "group_rate": 1.0,
+          "fold_enrichment": 1.0015394765779635,
+          "fold_ci95": [
+            1.0003802022087556,
+            1.0027000943534683
+          ],
+          "odds_ratio": 0.24639624539054644,
+          "or_ci95": [
+            0.013942114599579862,
+            4.3545123165454305
+          ],
+          "fisher_p_greater": 0.8929780145051329,
+          "hypergeom_sf": 0.8929780145051329,
+          "significant_005": false
+        }
+      }
+    }
+  },
+  "sweep": [
+    {
+      "fraction": 0.0005,
+      "score_threshold": 0.88666666,
+      "n_predictions": 721,
+      "n_operons_hit": 574,
+      "background_rate": 0.20872727272727273,
+      "dep_rate": 0.2018348623853211,
+      "dep_fold": 0.9669788703129496,
+      "dep_fisher_p": 0.6106077442180606,
+      "act_rate": 0.24489795918367346,
+      "act_fold": 1.173291616298087,
+      "rep_rate": 0.16666666666666666,
+      "rep_fold": 0.7984901277584203
+    },
+    {
+      "fraction": 0.001,
+      "score_threshold": 0.8666667,
+      "n_predictions": 1408,
+      "n_operons_hit": 940,
+      "background_rate": 0.3418181818181818,
+      "dep_rate": 0.3853211009174312,
+      "dep_fold": 1.1272691782158892,
+      "dep_fisher_p": 0.19040744212348887,
+      "act_rate": 0.40816326530612246,
+      "act_fold": 1.194094659140252,
+      "rep_rate": 0.36666666666666664,
+      "rep_fold": 1.072695035460993
+    },
+    {
+      "fraction": 0.0025,
+      "score_threshold": 0.82666665,
+      "n_predictions": 3622,
+      "n_operons_hit": 1662,
+      "background_rate": 0.6043636363636363,
+      "dep_rate": 0.6422018348623854,
+      "dep_fold": 1.062608330849314,
+      "dep_fisher_p": 0.23541579323719236,
+      "act_rate": 0.673469387755102,
+      "act_fold": 1.114344654829441,
+      "rep_rate": 0.6166666666666667,
+      "rep_fold": 1.020356999598877
+    },
+    {
+      "fraction": 0.005,
+      "score_threshold": 0.78,
+      "n_predictions": 7027,
+      "n_operons_hit": 2172,
+      "background_rate": 0.7898181818181819,
+      "dep_rate": 0.7981651376146789,
+      "dep_fold": 1.0105681990977748,
+      "dep_fisher_p": 0.4693442986845072,
+      "act_rate": 0.8775510204081632,
+      "act_fold": 1.111079791032435,
+      "rep_rate": 0.7333333333333333,
+      "rep_fold": 0.9284837323511356
+    },
+    {
+      "fraction": 0.01,
+      "score_threshold": 0.7,
+      "n_predictions": 13895,
+      "n_operons_hit": 2552,
+      "background_rate": 0.928,
+      "dep_rate": 0.9357798165137615,
+      "dep_fold": 1.0083834229674153,
+      "dep_fisher_p": 0.46753383287215444,
+      "act_rate": 0.9795918367346939,
+      "act_fold": 1.0555946516537649,
+      "rep_rate": 0.9,
+      "rep_fold": 0.9698275862068966
+    },
+    {
+      "fraction": 0.025,
+      "score_threshold": 0.48333332,
+      "n_predictions": 34594,
+      "n_operons_hit": 2742,
+      "background_rate": 0.9970909090909091,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0029175784099198,
+      "dep_fisher_p": 0.7232739401737509,
+      "act_rate": 1.0,
+      "act_fold": 1.0029175784099198,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0029175784099198
+    },
+    {
+      "fraction": 0.05,
+      "score_threshold": 0.20666666,
+      "n_predictions": 69419,
+      "n_operons_hit": 2750,
+      "background_rate": 1.0,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0,
+      "dep_fisher_p": 1.0,
+      "act_rate": 1.0,
+      "act_fold": 1.0,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0
+    },
+    {
+      "fraction": 0.1,
+      "score_threshold": 0.083333336,
+      "n_predictions": 138971,
+      "n_operons_hit": 2750,
+      "background_rate": 1.0,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0,
+      "dep_fisher_p": 1.0,
+      "act_rate": 1.0,
+      "act_fold": 1.0,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0
+    },
+    {
+      "fraction": 0.25,
+      "score_threshold": 0.026666667,
+      "n_predictions": 347210,
+      "n_operons_hit": 2750,
+      "background_rate": 1.0,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0,
+      "dep_fisher_p": 1.0,
+      "act_rate": 1.0,
+      "act_fold": 1.0,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0
+    },
+    {
+      "fraction": 0.5,
+      "score_threshold": 0.006666667,
+      "n_predictions": 722817,
+      "n_operons_hit": 2750,
+      "background_rate": 1.0,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0,
+      "dep_fisher_p": 1.0,
+      "act_rate": 1.0,
+      "act_fold": 1.0,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0
+    },
+    {
+      "fraction": 1.0,
+      "score_threshold": 0.0,
+      "n_predictions": 1374596,
+      "n_operons_hit": 2750,
+      "background_rate": 1.0,
+      "dep_rate": 1.0,
+      "dep_fold": 1.0,
+      "dep_fisher_p": 1.0,
+      "act_rate": 1.0,
+      "act_fold": 1.0,
+      "rep_rate": 1.0,
+      "rep_fold": 1.0
+    }
+  ],
+  "runinfo": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "biopython": "1.88",
+    "dsites": "1.3.0",
+    "fimo": "5.5.4",
+    "seed": 42,
+    "pad": 10,
+    "up": 300,
+    "down": 50,
+    "neg_ratio": 5,
+    "pseudocount": 0.5,
+    "timestamp": "2026-10-09 00:15:03",
+    "wall_seconds": 2.1
+  }
+}

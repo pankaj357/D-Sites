@@ -1,0 +1,114 @@
+{
+  "tf": "FNR_ecoli",
+  "note": "FIMO is ONE GLOBAL RUN on the identical promoter search space; it is compared against D-Sites POOLED grouped-CV results, not per-fold numbers. Unreported positions (p >= 1e-2) are treated as score 0 (--thresh 1e-2).",
+  "n_windows": 1278308,
+  "n_sites": 97,
+  "n_fimo_rows": 42819,
+  "fimo_matches_inside_promoters_frac": 1.0,
+  "fimo_default_threshold_p": 0.0001,
+  "metrics_at_default": {
+    "cutoff": 4.0,
+    "n_scored": 1278308,
+    "n_pos_windows": 3790,
+    "n_neg_windows": 1274518,
+    "TP": 34,
+    "FP": 498,
+    "precision": 0.06390977443609022,
+    "recall": 0.3711340206185567,
+    "F1": 0.10904231625835188,
+    "FPR": 0.0003907359488057446,
+    "PR_AUC": 0.0076091418982643195,
+    "n_test_sites": 97,
+    "recovered_sites": 36,
+    "n_test_sites_in_space": 89,
+    "n_test_sites_scorable": 89,
+    "recall_in_space": 0.4044943820224719,
+    "top5pct_n": 63915,
+    "top5pct_TP": 303,
+    "top5pct_precision": 0.004740671203942736,
+    "top5pct_recall": 0.8556701030927835,
+    "top5pct_recall_in_space": 0.9325842696629213,
+    "top5pct_recovered_sites": 83
+  },
+  "PR_AUC": 0.0076091418982643195,
+  "n_predictions_at_default": 532,
+  "matched_count": {
+    "N": 532,
+    "note": "FIMO is one global run; D-Sites uses pooled out-of-fold probabilities from grouped CV.",
+    "dsites": {
+      "top_n": 532,
+      "TP_windows": 16,
+      "precision": 0.03007518796992481,
+      "recall": 0.13402061855670103,
+      "recall_in_space": 0.14606741573033707,
+      "recovered_sites": 13
+    },
+    "fimo": {
+      "top_n": 532,
+      "TP_windows": 34,
+      "precision": 0.06390977443609022,
+      "recall": 0.3711340206185567,
+      "recall_in_space": 0.4044943820224719,
+      "recovered_sites": 36
+    },
+    "n_sites": 97,
+    "n_sites_in_space": 89
+  },
+  "matched_count_reverse_at_dsites_top5pct": {
+    "N": 63901,
+    "note": "Reverse matched-count: N = size of the D-Sites top-5% operating set; both methods contribute their top-N windows on the identical search space. FIMO scores below its reporting threshold (p>=1e-2) are 0; if N exceeds the reported matches, remaining FIMO ranks are arbitrary (score-0 ties) but cannot gain recall beyond the p<1e-2 set.",
+    "dsites": {
+      "top_n": 63901,
+      "TP_windows": 391,
+      "precision": 0.00611884008074991,
+      "recall": 0.8350515463917526,
+      "recall_in_space": 0.9101123595505618,
+      "recovered_sites": 81
+    },
+    "fimo": {
+      "top_n": 63901,
+      "TP_windows": 303,
+      "precision": 0.004741709832396989,
+      "recall": 0.8556701030927835,
+      "recall_in_space": 0.9325842696629213,
+      "recovered_sites": 83
+    },
+    "n_sites": 97,
+    "n_sites_in_space": 89
+  },
+  "dsites_prob_saturation": {
+    "n_windows_pooled_prob_ge_0.999999": 0,
+    "n_windows_pooled_prob_ge_0.99": 3,
+    "n_windows_pooled_prob_ge_0.9": 2762
+  },
+  "fimo_version": "5.5.4",
+  "command": [
+    "/Users/admin/meme/bin/fimo",
+    "--thresh",
+    "0.01",
+    "--text",
+    "--oc",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli_oc",
+    "--bfile",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli.bg",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/fimo_FNR_ecoli.meme",
+    "/Users/admin/Desktop/D_sites_web/D-Sites_/Revision/results/promoters_FNR_ecoli.fasta"
+  ],
+  "runinfo": {
+    "python": "3.11.14",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "sklearn": "1.9.1",
+    "biopython": "1.88",
+    "dsites": "1.3.0",
+    "fimo": "5.5.4",
+    "seed": 42,
+    "pad": 10,
+    "up": 300,
+    "down": 50,
+    "neg_ratio": 5,
+    "pseudocount": 0.5,
+    "timestamp": "2026-10-09 00:14:22",
+    "wall_seconds": 1.8
+  }
+}
