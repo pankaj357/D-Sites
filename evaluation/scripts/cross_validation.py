@@ -1,64 +1,6 @@
 #!/usr/bin/env python3
 """
-cross_validation.py — Part A: site-level grouped 5-fold cross-validation of
-D-Sites (AmrZ / GlxR / CodY; also used for FNR E. coli internal validation).
-
-Protocol (goes into Methods — every choice documented):
--------------------------------------------------------
-1. POSITIVES: for each known site of the TF+genome (cleaned CollecTF export,
-   computational-only evidence rows removed), the best-PWM-scoring k-mer
-   (k = motif length) within site coords +/-10 bp from the genome, both
-   strands, exactly as dsites.predictor v1.2.0 extracts training positives
-   (see eval_common.extract_positives).
-2. GROUPED CV: sklearn GroupKFold(n_splits=5) where each known site is one
-   group; seed = 42. All windows/positives derived from a site stay in one
-   fold. A hard assertion verifies that no group (site) appears in both the
-   train and test partition of any fold (no train/test leakage).
-3. PER FOLD: RandomForestClassifier(n_estimators=300, n_jobs=-1,
-   random_state=42) trained on:
-     - train positives: one feature row per train site (its best k-mer,
-       single best-scoring orientation — as the predictor does);
-     - negatives: 5 x n_train_positives windows sampled (seeded per fold,
-       rng = default_rng(seed + fold)) from the SAME unique promoter windows
-       that are scanned, EXCLUDING all windows overlapping +/-10 bp around
-       ANY known site (train and test); both strand orientations of each
-       sampled window are used as separate training rows (predictor
-       behaviour).
-   Feature vector = the predictor's 11 features (PWM log-odds, GC, entropy,
-   mean/std of MGW/PropT/Roll/HelT).
-4. SCAN: ALL promoter windows (-300/+50 per CDS from the GFF, all contigs,
-   both strands, sliding 1 bp; deduplicated to unique genomic intervals) are
-   scored with the fold model; window probability = max over the two strand
-   orientations.
-5. EVALUATION per fold (exact definitions):
-   - a held-out (test) site is RECOVERED if any scored window with
-     prob >= cutoff overlaps [site_start-10, site_end+10];
-   - windows overlapping a TRAIN-fold site are EXCLUDED from scoring;
-   - TP = scored window with prob>=cutoff overlapping a test site;
-     FP = scored window with prob>=cutoff overlapping no known site;
-   - recall (site level), precision (window level), F1 (harmonic mean of the
-     two), FPR = FP / #scored windows overlapping no site, and PR-AUC
-     (average_precision_score over all scored windows);
-   - the cutoff is chosen on OUT-OF-FOLD training predictions ONLY: the
-     trained RF's out-of-bag (OOB) probabilities (oob_decision_function_)
-     vs training labels, F1-maximizing threshold. The test fold is never
-     used for cutoff selection.
-   - the same metrics are recorded for the "top 5% by probability" subset
-     of scored windows (the paper's operating point).
-6. REPORT: mean +/- SD across folds; per-fold details and pooled
-   out-of-fold predictions are saved to results/cv_{TF}.json /
-   results/oof_{TF}.npz; a combined table goes to results/cv_summary.csv.
-
-POOLED OUT-OF-FOLD SCORES (used by Parts B/C): every unique window
-contributes exactly ONE out-of-fold prediction:
-  - windows overlapping site(s) whose sites all fall in the same fold f:
-    the score from fold f's model (where those sites are held out);
-  - windows overlapping sites from >1 fold can never be scored without
-    touching a train site -> dropped from pooling (count reported);
-  - windows overlapping no site: a fold assigned by seeded RNG
-    (default_rng(seed+777)); such a window is a legitimate test prediction
-    in every fold, so a random fold assignment is unbiased.
-
+site-level grouped 5-fold cross-validation of D-Sites (AmrZ / GlxR / CodY; also used for FNR E. coli internal validation).
 Usage:
   python cross_validation.py --tf AmrZ [--folds 5 --trees 300 --n_jobs -1]
   python cross_validation.py --smoke          # 2 folds, 50 trees, AmrZ only
