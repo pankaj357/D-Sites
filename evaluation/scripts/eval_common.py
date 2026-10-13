@@ -1,59 +1,7 @@
 #!/usr/bin/env python3
 """
-eval_common.py — shared library for the D-Sites held-out evaluation pipeline
-(held-out evaluation protocol; replaces the original training-set benchmark
-Reviewer 2).
-
-Design decisions documented here (these go into Methods):
----------------------------------------------------------
-1. SEARCH SPACE (identical for D-Sites and FIMO): promoter windows -300/+50 bp
-   per CDS from the GFF (via dsites.predictor.load_promoters), ALL contigs in
-   the FASTA, both strands, sliding 1 bp. Overlapping/duplicate promoter
-   regions are collapsed to the UNION of unique genomic k-mer intervals
-   (k = motif length); identical intervals carry identical features and scores,
-   so this changes nothing except runtime.
-2. WINDOW IDENTITY: a scored "window" is the genomic interval
-   [pos, pos+k-1] on the plus-strand coordinate system. Both strand
-   orientations of the k-mer are scored (exactly as the predictor emits both),
-   and the window probability is max(prob+, prob-). This avoids
-   double-counting the two strands of one physical position in TP/FP counts.
-   (Deviation from predictor v1.2.0 output bookkeeping, which reports
-   minus-strand hits shifted by k-1 bp; with the +/-10 bp overlap pad used
-   throughout, the interval-based definition is the rigorous one.)
-3. POSITIVES: for each known site, the best-PWM-scoring k-mer within site
-   coords +/-10 bp (both strands) — code replicates predictor.run() lines
-   exactly (dsites v1.2.0), including its count-based pseudocount PWM
-   (pseudocount 0.5, natural log) and genome background frequencies.
-   NOTE: for JASPAR-fraction motifs (AmrZ) the "counts" are fractions with
-   column sum 1, so the predictor's count-based pseudocount yields
-   (f+0.5)/3 per cell; this is the behaviour of the tool under evaluation and
-   is kept deliberately. FIMO receives the raw letter probabilities.
-4. FEATURES: the predictor's 11 features, computed by a vectorized
-   re-implementation that is unit-tested (selftest) to match
-   dsites.predictor.{logodds_score, seq_entropy, dinuc_shape_stats}
-   numerically. Feature order:
-   [PWM_logodds, GC, Entropy, MGW_mean, MGW_std, PropTw_mean, PropTw_std,
-    Roll_mean, Roll_std, HelTw_mean, HelTw_std].
-5. OVERLAP: window [pos,pos+k-1] "overlaps" site s iff it intersects
-   [site_start-10, site_end+10] (the same +/-10 bp pad used for positive
-   extraction).
-6. NEGATIVES (training only): sampled from the same unique promoter windows
-   that are scanned, EXCLUDING every window overlapping any known site
-   (+/-10 bp pad, train AND test sites), both strand orientations of each
-   sampled window are used as separate training rows (as the predictor does).
-7. FIMO: letter-probability MEME files are regenerated from the same motif
-   sources; FIMO is run on the promoter FASTA ONLY (identical search space)
-   with --thresh 1e-2 (unreported positions are treated as score 0 — with
-   ~1.3-2 M windows per TF, --thresh 1.0 would produce ~10^8 rows; positions
-   with p >= 1e-2 carry no discriminative information for any operating point
-   with p < 1e-2). A genome-derived background file (--bfile) is passed so
-   FIMO's log-odds use the same genome nucleotide frequencies as D-Sites'
-   PWM (fairer to FIMO than the uniform default; documented deviation from
-   the literal command in the task spec). Unreported windows get score 0 in
-   PR computations.
-8. SEEDS: global seed 42; per-fold RNGs are derived deterministically
-   (seed + fold_index for negative sampling; seed + 777 for pooled fold
-   assignment of site-free windows).
+shared library for the D-Sites held-out evaluation pipeline
+(held-out evaluation protocol
 
 All heavy per-TF artefacts (window universe, feature matrix, site table,
 window->site overlaps, promoter FASTA) are cached in results/cache/ so that
@@ -151,10 +99,8 @@ _B2I = np.full(256, -1, dtype=np.int8)
 for _i, _b in enumerate(b"ACGT"):
     _B2I[_b] = _i
 
-# NOTE (v1.3.0): shape features now come from the published DNAshape
-# pentamer query table via dsites.predictor.shape_stats_from_codes (the old
-# 16-dinucleotide DINUC_PARAMS/_SHAPE_LUT path was removed with the table).
-
+# NOTE (v1.3.0): shape features come from the published DNAshape
+# pentamer query table via dsites.predictor.shape_stats_from_codes 
 
 # --------------------------------------------------------------------------
 # Loading
@@ -203,9 +149,10 @@ def load_sites(cfg):
     return out
 
 
-# --------------------------------------------------------------------------
-# Positive extraction (replicates dsites predictor v1.2.0 exactly)
-# --------------------------------------------------------------------------
+#--------------------------------------------------------------------------
+#Positive extraction 
+#--------------------------------------------------------------------------
+
 def extract_positives(sites, contig_seqs, pwm, bg, k, pad=PAD):
     """Best-PWM k-mer within site coords +/- pad, both strands. Returns the
     sites DataFrame with kmer columns appended; sites with no valid k-mer
@@ -278,7 +225,7 @@ def build_window_universe(regions, contigs, contig_seqs, k):
 
 
 # --------------------------------------------------------------------------
-# Vectorized feature computation (unit-tested against dsites predictor)
+# Vectorized feature computation 
 # --------------------------------------------------------------------------
 def codes_from_seqs(seqs):
     arr = np.frombuffer("".join(seqs).encode("ascii"), dtype=np.uint8)
@@ -576,14 +523,7 @@ def window_site_metrics(prob, labels, scored_mask, test_site_ids, site2wins, cut
         if len(wsc) and np.any(prob[wsc] >= cutoff):
             recovered += 1
     n_test = len(test_site_ids)
-    # IN-SPACE (single harmonized definition, used in ALL outputs): a site is
-    # in-space iff its interval +/-10 bp pad intersects ANY promoter window
-    # of the scan universe (i.e. it has a site2wins entry) -- independent of
-    # per-fold train-site exclusions.
-    # SCORABLE (reported for transparency): in-space sites that additionally
-    # have >=1 SCORED window in this fold (windows overlapping train-fold
-    # sites are excluded; such a site can never be recovered in this fold,
-    # which makes per-fold recall_in_space slightly conservative).
+
     in_space = 0
     scorable = 0
     for sid in test_site_ids:
@@ -597,7 +537,7 @@ def window_site_metrics(prob, labels, scored_mask, test_site_ids, site2wins, cut
     recall_in_space = recovered / in_space if in_space else 0.0
     f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
     ap = float(average_precision_score(l, p)) if l.sum() else 0.0
-    # top 5% by probability (paper operating point)
+    # top 5% by probability 
     n_top = max(1, int(0.05 * len(idx)))
     order = np.argsort(-p, kind="stable")[:n_top]
     top_idx = idx[order]
