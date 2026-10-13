@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-summarize_cv.py — build the combined results/cv_summary.csv (Part A deliverable)
-from the per-TF results/cv_{TF}.json files (and cv_FNR_ecoli.json if present).
+Build the combined results/cv_summary.csv from the per-TF results/cv_{TF}.json files (and cv_FNR_ecoli.json if present).
 
 Wide format: one row per TF; mean ± SD across the 5 grouped CV folds for every
 protocol metric, plus search-space coverage counts and pooled-OOF PR-AUC.
