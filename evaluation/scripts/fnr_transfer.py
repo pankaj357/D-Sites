@@ -1,33 +1,7 @@
 #!/usr/bin/env python3
 """
-fnr_transfer.py — Part E: FNR cross-genome transfer (E. coli K-12 ->
-Salmonella Typhimurium LT2) for the D-Sites revision.
+FNR cross-genome transfer (E. coli K-12 -> Salmonella Typhimurium LT2).
 
-Steps:
-1. TRAINING DATA (E. coli K-12 MG1655, NC_000913.3): positives = the 97
-   documented RegulonDB FNR sites (Revision/data/regulondb_ecoli_FNR_sites.tsv),
-   each represented by the best-PWM-scoring 14-mer within site coords +/-10 bp
-   (both strands), exactly as the predictor extracts positives; negatives =
-   5 x 97 windows sampled (seed 42) from E. coli promoter windows (-300/+50
-   per CDS, both strands), excluding +/-10 bp around ALL 97 known sites.
-2a. INTERNAL VALIDATION: the same grouped 5-fold CV as Part A within the 97
-    E. coli sites -> results/cv_FNR_ecoli.json (written by
-    cross_validation.run_cv; leakage assertion included).
-2b. FAIR FIMO BASELINE: FIMO with the same FNR motif (PRODORIC MX000004) on
-    the E. coli promoter FASTA only -> results/fimo_fair_FNR_ecoli.json
-    (written by run_fimo_fair).
-3. TRANSFER: a final RandomForestClassifier(n_estimators=300, n_jobs=-1,
-   random_state=42, oob_score=True) is trained on ALL 97 E. coli sites
-   (cutoff = F1-max on OOB probabilities) and applied to scan Salmonella LT2
-   promoters (NC_003197.2 + NC_003277.2 from Original/examples/Fnr/):
-     - results/fnr_transfer_predictions.csv        (prob >= OOB-F1 cutoff)
-     - results/fnr_transfer_predictions_top5pct.csv(top 5% of scored windows)
-     - results/fnr_lt2_window_scores.csv.gz        (every scored window)
-   FIMO with the same motif is run on the same LT2 promoter FASTA:
-     - results/fimo_fnr_lt2_promoters.tsv          (raw FIMO output)
-   These feed the Phase-4 operon-level test; NO enrichment is computed here.
-4. results/fnr_transfer_runinfo.json records all commands, versions, seeds,
-   cutoffs and counts.
 
 Usage:
   python fnr_transfer.py [--folds 5 --trees 300 --n_jobs -1]
