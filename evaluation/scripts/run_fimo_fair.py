@@ -1,48 +1,6 @@
 #!/usr/bin/env python3
 """
-run_fimo_fair.py — Part B: fair FIMO baseline for the D-Sites revision.
-
-Why this exists: Reviewer 2 showed the original comparison was unfair — FIMO
-scanned the whole genome while D-Sites scanned only promoter windows. Here
-BOTH methods see the IDENTICAL search space: the unique promoter-window
-k-mer intervals (-300/+50 per CDS, both strands, 1 bp slide) cached by
-eval_common.
-
-Protocol:
-1. Promoter window sequences (-300/+50 per CDS, all contigs) are written to a
-   FASTA (headers "contig:start-end", 1-based inclusive) — the same regions
-   that define the D-Sites scan space.
-2. Each motif is rewritten as a minimal MEME Suite 4 letter-probability
-   matrix (rows normalized to sum 1; for the MEME-format sources this
-   preserves the published probabilities exactly; for AmrZ.jaspar the JASPAR
-   fractions are used as-is).
-3. FIMO is run on the promoter FASTA ONLY:
-     fimo --thresh 1e-2 --text --oc OUT --bfile BG motif.meme promoters.fasta
-   - --thresh 1e-2 (deviation from the spec's literal "--thresh 1.0",
-     explicitly permitted there): positions with p >= 1e-2 are treated as
-     score 0. With ~1.7M unique windows x 2 strands per TF, --thresh 1.0
-     would emit ~4M rows/TF of non-informative matches; no operating point
-     with p < 1e-2 is affected.
-   - --bfile: genome nucleotide frequencies (deviation from the literal
-     command, documented): D-Sites' PWM log-odds use genome background
-     frequencies, so giving FIMO the same background is the fair choice
-     (uniform background would systematically handicap FIMO on non-uniform
-     genomes such as GC-rich C. glutamicum).
-   `fimo --version` and the exact command line are recorded in the JSON.
-4. Evaluation uses the SAME overlap definitions as the D-Sites CV
-   (window = motif match interval; overlap with [site_start-10, site_end+10];
-   per-window best -log10 p over both strands). FIMO is ONE GLOBAL RUN (not
-   per fold) and is therefore compared against the D-Sites POOLED
-   cross-validation results — this is stated in every output.
-   Metrics at FIMO's default threshold (p < 1e-4): window-level
-   TP/FP/precision/FPR, site-level recall (all sites, and the subset inside
-   the search space), F1, and PR-AUC (average_precision_score; unreported
-   windows contribute score 0).
-5. MATCHED-COUNT COMPARISON: N = number of unique FIMO prediction windows at
-   p < 1e-4. D-Sites contributes its top-N windows by pooled out-of-fold
-   probability (from results/oof_{TF}.npz, written by cross_validation.py);
-   FIMO contributes its top-N windows by p-value (== the p<1e-4 set).
-   Window-level precision and site-level recall are reported for both at N.
+FIMO baseline.
 
 Outputs (results/):
   fimo_{TF}.tsv           raw FIMO --text output
