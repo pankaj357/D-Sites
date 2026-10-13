@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-ablation.py — Part D: feature-set ablation justifying the "hybrid" claim.
-
-Same grouped 5-fold CV protocol as Part A (cross_validation.run_cv — same
-folds, same seeds, same negatives, same OOB cutoff rule), applied to three
+Same grouped 5-fold CV protocol as cross_validation.run_cv applied to three
 feature sets:
   1. PWM_only          — PWM log-odds only                    (1 feature)
   2. PWM_GC_Entropy    — PWM log-odds + GC content + entropy  (3 features)
