@@ -1,58 +1,6 @@
 #!/usr/bin/env python3
 """
-fnr_operon_enrichment.py — Phase 4: FNR operon-level enrichment analysis
-. Replacement for the discredited "68.1% validation
-success" claim. Answers Reviewer 2: "an FNR analysis at the operon level with
-a hypergeometric enrichment test against the genome-wide hit rate."
-
-Biological setup: an FNR model trained ONLY on 97 documented E. coli K-12
-sites (Phase 3, Part E) was used to scan Salmonella LT2 promoter windows
-(-300/+50 per CDS, both contigs). Here we test whether operons containing
-differentially expressed genes (DEPs) from Behera et al. 2020 (PMID 31862389;
-fnr null vs WT, anaerobic, 153 DEPs -> 124 unique LT2-mapped genes) are
-enriched for predicted FNR binding in their promoter, relative to the
-genome-wide operon hit rate. NOTE: the DEPs were never used to train or tune
-the model, so this is a genuine external validation.
-
-Definitions (all documented for Methods):
-1. OPERON PROMOTER WINDOW: strand '+' -> [start-300, start+50];
-   strand '-' -> [end-50, end+300]; clipped to contig bounds (same rule as
-   the CDS-level promoter space scanned in Phase 3, applied to the operon's
-   leading end).
-2. HIT: an operon is hit iff >=1 prediction/match interval overlaps its
-   promoter window (1-bp overlap suffices, same overlap philosophy as the
-   +/-10 bp site overlaps of Phase 3).
-3. DEP OPERON: operon containing >=1 of the 124 unique LT2-mapped DEP genes
-   (by locus tag). Direction masks: FNR-activated (down in fnr mutant) /
-   FNR-repressed (up in fnr mutant); an operon with genes of both directions
-   (reported) enters both masks.
-4. PREDICTION SETS: (a) D-Sites full transfer set (prob >= OOB-F1 cutoff);
-   (b) D-Sites top-5% of scored windows; (c) FIMO p<1e-4 (its default);
-   (d) FIMO top-N by p-value with N = size of (b); FIMO's reporting
-   threshold (p<1e-2) yields fewer matches than N, so set (d) is capped at
-   all reported matches (documented in the JSON).
-   ADDITIONS (a2,a3): D-Sites top-1% and top-0.1% of scored windows.
-   Rationale: sets (a),(b),(d) retain 3.6-5% of ALL promoter windows
-   (~1 prediction per 23-35 bp of promoter space), so the genome-wide
-   operon hit rate saturates at ~100% and no enrichment is measurable at
-   those operating points -- this saturation is itself reported (it is the
-   quantitative version of Reviewer 2's criticism of the old 68.1% claim).
-   The stringent sets and the threshold sweep (point 7, extended down to
-   the top 0.05%) are where operon-level discrimination lives.
-5. STATISTICS per set: background hit rate = hit operons / 2,750; group hit
-   rates for DEP-all / activated / repressed; fold enrichment = group rate /
-   background rate with 95% log-normal (risk-ratio) CI; Fisher's exact test
-   (scipy.stats.fisher_exact, alternative='greater') with the full 2x2 table;
-   hypergeometric tail (scipy.stats.hypergeom.sf); odds ratio with 95%
-   log-normal CI (Haldane-Anscombe 0.5 correction only if a cell is 0).
-6. GENE-LEVEL LEGACY VIEW: same analysis with each gene's own promoter
-   window (-300/+50 from the CDS start, locus_tag from the LT2 GFF), for
-   continuity with the old Table 4; clearly labeled gene-level.
-7. ENRICHMENT-VS-THRESHOLD: D-Sites window scores are swept over retained
-   fractions {0.05%, 0.1%, 0.25%, 0.5%, 1%, 2.5%, 5%, 10%, 25%, 50%, 100%}
-   of all scored windows; at each point the operon hit rates, fold
-   enrichment and Fisher p are recomputed and plotted
-   (figures/fnr_enrichment_vs_threshold.png, top-5% marked).
+FNR operon-level enrichment analysis
 
 Outputs:
   results/fnr_operon_enrichment.json          all tables, p-values, rates
@@ -61,7 +9,6 @@ Outputs:
   figures/fnr_operon_enrichment.png           bar chart (y from 0, p annotated)
   figures/fnr_enrichment_vs_threshold.png     sweep curves
 
-Usage: python fnr_operon_enrichment.py
 """
 
 import json
