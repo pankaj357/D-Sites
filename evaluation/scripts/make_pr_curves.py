@@ -1,23 +1,6 @@
 #!/usr/bin/env python3
 """
-make_pr_curves.py — Part C: precision-recall curves with uncertainty for the
-D-Sites revision.
-
-Per TF:
-  * D-Sites: POOLED out-of-fold predictions (results/oof_{TF}.npz, written by
-    cross_validation.py): every unique promoter window contributes exactly one
-    score — from the fold in which its overlapped site(s) were held out
-    (site-free windows are assigned a fold by seeded RNG; windows overlapping
-    sites from multiple folds are dropped, count reported in cv_{TF}.json).
-  * FIMO: one global run on the identical search space
-    (results/fimo_scores_{TF}.npz, written by run_fimo_fair.py); scores are
-    -log10(p) with 0 for unreported positions (p >= 1e-2).
-  * Labels (both methods): window overlaps [site_start-10, site_end+10] of a
-    known site (window-level evaluation; the no-skill baseline = prevalence).
-  * Bootstrap 95% CI bands: 1000 resamples with replacement of the pooled
-    (score, label) pairs (seeded), precision interpolated on a recall grid
-    (0..1, step 0.01); band = 2.5/97.5 percentiles across resamples. AP
-    (average precision) values with bootstrap CIs are shown in the legend.
+Precision-recall curves
 
 Outputs:
   Revision/figures/pr_curve_{TF}.png          window-level PR (spec definition)
@@ -138,7 +121,7 @@ def sitelevel_curves(tf, n_boot, seed, outdir, figdir, verbose=True):
         lb = labels.astype(bool)
         tp = np.empty(len(thr), dtype=np.int64)
         pred = np.empty(len(thr), dtype=np.int64)
-        for lo in range(0, len(thr), 50):           # chunk to bound memory
+        for lo in range(0, len(thr), 50):# chunk to bound memory
             ge = sc[None, :] >= thr[lo:lo + 50, None]
             tp[lo:lo + 50] = (ge & lb[None, :]).sum(axis=1)
             pred[lo:lo + 50] = ge.sum(axis=1)

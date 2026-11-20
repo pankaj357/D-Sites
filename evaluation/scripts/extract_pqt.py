@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-extract_pqt.py — one-time extraction of the DNAshape pentamer query table
+Extraction of the DNAshape pentamer query table
 (PQT) from DNAshapeR's C++ source (TableCompiler.cpp, QueryTable array) into a
 compact TSV shipped with D-Sites.
 
