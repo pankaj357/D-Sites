@@ -1,0 +1,7 @@
+# r2_major3_ablation_stats.py  seed=42  python 3.11.14  dsites 1.3.0
+[FNR] running grouped 5-fold CV x 3 feature sets via run_cv ...
+[FNR] PWM_only: per-fold AP [0.000652, 0.000632, 0.000627, 0.000581, 0.000577] pooled=0.003042 leakage=PASSED (11s)
+[FNR] PWM_GC_Entropy: per-fold AP [0.000842, 0.000795, 0.000837, 0.000684, 0.000788] pooled=0.003785 leakage=PASSED (24s)
+[FNR] all_11: per-fold AP [0.001373, 0.001258, 0.001524, 0.002353, 0.000879] pooled=0.005404 leakage=PASSED (39s)
+[CodY] pooled prevalence 0.00616 (9807/1592431) vs per-fold mean 0.00124; ratio 4.98x; AP ratio 4.62x
+runtime 39s

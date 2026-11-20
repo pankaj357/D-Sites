@@ -1,0 +1,96 @@
+{
+  "n_full_set": 48353,
+  "background_hit_rate": 0.9992727272727273,
+  "groups": {
+    "DEP_all": {
+      "group": "DEP_all",
+      "group_size": 109,
+      "group_hits": 109,
+      "table_2x2": [
+        [
+          109,
+          0
+        ],
+        [
+          2639,
+          2
+        ]
+      ],
+      "background_rate": 0.9992727272727273,
+      "group_rate": 1.0,
+      "fold_enrichment": 1.0007278020378456,
+      "fold_ci95": [
+        0.9996776427786402,
+        1.001779064487142
+      ],
+      "odds_ratio": 0.20742564879712067,
+      "or_ci95": [
+        0.009898104238477293,
+        4.346832357215649
+      ],
+      "fisher_p_greater": 0.9222844670789377,
+      "hypergeom_sf": 0.9222844670789377,
+      "significant_005": false
+    },
+    "DEP_activated": {
+      "group": "DEP_activated",
+      "group_size": 49,
+      "group_hits": 49,
+      "table_2x2": [
+        [
+          49,
+          0
+        ],
+        [
+          2699,
+          2
+        ]
+      ],
+      "background_rate": 0.9992727272727273,
+      "group_rate": 1.0,
+      "fold_enrichment": 1.0007278020378456,
+      "fold_ci95": [
+        0.999700967677322,
+        1.0017556911025638
+      ],
+      "odds_ratio": 0.09168364511946657,
+      "or_ci95": [
+        0.004344622881594004,
+        1.934780304639061
+      ],
+      "fisher_p_greater": 0.9646747577631536,
+      "hypergeom_sf": 0.9646747577631536,
+      "significant_005": false
+    },
+    "DEP_repressed": {
+      "group": "DEP_repressed",
+      "group_size": 60,
+      "group_hits": 60,
+      "table_2x2": [
+        [
+          60,
+          0
+        ],
+        [
+          2688,
+          2
+        ]
+      ],
+      "background_rate": 0.9992727272727273,
+      "group_rate": 1.0,
+      "fold_enrichment": 1.0007278020378456,
+      "fold_ci95": [
+        0.9996967693288971,
+        1.0017598980976816
+      ],
+      "odds_ratio": 0.1125162730146922,
+      "or_ci95": [
+        0.005344170769133132,
+        2.368919752010524
+      ],
+      "fisher_p_greater": 0.9568319058169913,
+      "hypergeom_sf": 0.9568319058169913,
+      "significant_005": false
+    }
+  }
+}

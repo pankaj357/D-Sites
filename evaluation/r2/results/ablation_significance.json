@@ -1,0 +1,353 @@
+{
+  "protocol": "\nr2_major3_ablation_stats.py \u2014 EVB-25-0116 R2, Major Comment 3.\n\nAblation statistics, the missing FNR arm, and a numerical explanation of the\npooled-vs-per-fold AP gap.\n\nREAD-ONLY inputs (evaluation/ never modified):\n  evaluation/results/ablation_{AmrZ,GlxR,CodY}.json   stored 3-factor ablation\n  evaluation/results/cv_CodY.json                     per-fold scored-window counts\n  evaluation/results/oof_CodY.npz                     pooled OOF scores/labels\n  evaluation/results/cache/FNR_ecoli_windows.pkl      FNR bundle (read-only load)\n\nWHAT IT DOES\n1. Loads the stored per-fold PR-AUC (average precision) of the three feature\n   sets (PWM_only / PWM_GC_Entropy / all_11) for AmrZ, GlxR, CodY and computes\n   per-fold paired contrasts:\n     C1 = AP(all_11) - AP(PWM_only)\n     C2 = AP(all_11) - AP(PWM_GC_Entropy)\n   For each factor x contrast: the 5 per-fold differences, mean +/- SD,\n   Wilcoxon signed-rank test (EXPLORATORY: n=5 pairs, very low power --\n   reported as such) and a paired bootstrap over folds (10,000 resamples,\n   seed 42) of the mean difference with percentile 95% CI. Holm correction\n   across the three factors, per contrast.\n2. FNR ARM: reruns the same 3-feature-set grouped 5-fold CV for FNR_ecoli\n   (97 RegulonDB sites) by calling cross_validation.run_cv (imported, not\n   modified) with feature_idx [0], [0,1,2] and None -- identical folds,\n   negatives, seeds and protocol as the stored ablation (run_cv is the same\n   function ablation.py uses). Leakage assertions fire inside run_cv; the\n   per-fold and pooled AP are saved.\n3. AP-DENOMINATOR EXPLANATION (CodY, representative): reports the pooled AP\n   denominator (windows and positive-window counts from the pooled OOF\n   arrays, labels over ALL known sites) versus per-fold scored-window counts\n   (train-site-overlapping windows excluded) and per-fold positive-window\n   counts. The prevalence ratio (~5x) between the two denominators explains\n   the AP gap (per-fold AP mean ~0.0039 vs pooled AP ~0.0179): AP is a\n   prevalence-scaled ranking summary, and excluding train-site windows\n   removes ~80% of positive-labelled windows while removing essentially no\n   negatives, collapsing per-fold prevalence.\n\nDeterministic (seed 42). Outputs under the R2 workspace only.\n",
+  "seed": 42,
+  "n_bootstrap": 10000,
+  "feature_sets": [
+    "PWM_only",
+    "PWM_GC_Entropy",
+    "all_11"
+  ],
+  "contrasts": {
+    "C1_all11_minus_PWM_only": [
+      "all_11",
+      "PWM_only"
+    ],
+    "C2_all11_minus_PWMGE": [
+      "all_11",
+      "PWM_GC_Entropy"
+    ]
+  },
+  "per_fold_AP": {
+    "AmrZ": {
+      "PWM_only": [
+        0.0006116990498308924,
+        0.0006077549546568228,
+        0.0009378089529866311,
+        0.0008165730921591661,
+        0.0006972484721151969
+      ],
+      "PWM_GC_Entropy": [
+        0.000625626233013383,
+        0.0006096405788405351,
+        0.000898885495712757,
+        0.0008777839943694553,
+        0.0007300948268720299
+      ],
+      "all_11": [
+        0.0006689641318514644,
+        0.0007195914928966178,
+        0.0011541591230810194,
+        0.0011011739934063348,
+        0.000851816532925765
+      ]
+    },
+    "GlxR": {
+      "PWM_only": [
+        0.0016500652760495882,
+        0.0015032355447000291,
+        0.0014086183941476704,
+        0.001740563380553133,
+        0.0013224350270056272
+      ],
+      "PWM_GC_Entropy": [
+        0.0017010593722615601,
+        0.001528594944362526,
+        0.0014706112441175052,
+        0.0018150690188853608,
+        0.0014024312095782714
+      ],
+      "all_11": [
+        0.0026361989179563535,
+        0.0018964321455242341,
+        0.00220271859608635,
+        0.0024315903581895865,
+        0.0016913334782450624
+      ]
+    },
+    "CodY": {
+      "PWM_only": [
+        0.0017093361070212108,
+        0.0017851737471255,
+        0.0015102380230027778,
+        0.0017984586413125295,
+        0.0017402763715976227
+      ],
+      "PWM_GC_Entropy": [
+        0.0021158564376007947,
+        0.002123228851695532,
+        0.00177112895993293,
+        0.0021508174565285938,
+        0.0020698361100106246
+      ],
+      "all_11": [
+        0.00421624357205919,
+        0.004073532668521861,
+        0.00338618362649163,
+        0.0038409467963035565,
+        0.0038054504426578402
+      ]
+    },
+    "FNR_ecoli": {
+      "PWM_only": [
+        0.000651895781068989,
+        0.0006318187889557372,
+        0.0006274505160008272,
+        0.0005810220530333565,
+        0.0005769732335780499
+      ],
+      "PWM_GC_Entropy": [
+        0.000841597992152031,
+        0.0007949282586430038,
+        0.0008367742886566042,
+        0.0006840983192672098,
+        0.0007878890460952521
+      ],
+      "all_11": [
+        0.001373285115311412,
+        0.00125829192920473,
+        0.0015235327796627005,
+        0.002353481701649029,
+        0.0008785611066345736
+      ]
+    }
+  },
+  "pooled_AP": {
+    "AmrZ": {
+      "PWM_only": null,
+      "PWM_GC_Entropy": null,
+      "all_11": null
+    },
+    "GlxR": {
+      "PWM_only": null,
+      "PWM_GC_Entropy": null,
+      "all_11": null
+    },
+    "CodY": {
+      "PWM_only": null,
+      "PWM_GC_Entropy": null,
+      "all_11": null
+    },
+    "FNR_ecoli": {
+      "PWM_only": 0.003041669113211661,
+      "PWM_GC_Entropy": 0.003785047353669761,
+      "all_11": 0.005404208050208564
+    }
+  },
+  "contrasts_stats": {
+    "AmrZ": {
+      "C1_all11_minus_PWM_only": {
+        "per_fold_diffs": [
+          5.7265082020572003e-05,
+          0.000111836538239795,
+          0.00021635017009438836,
+          0.0002846009012471688,
+          0.00015456806081056806
+        ],
+        "mean": 0.00016492415048249845,
+        "sd": 8.871749877522186e-05,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          9.855426026626041e-05,
+          0.00023639788241513793
+        ],
+        "wilcoxon_p_holm": 0.25
+      },
+      "C2_all11_minus_PWMGE": {
+        "per_fold_diffs": [
+          4.333789883808139e-05,
+          0.00010995091405608271,
+          0.00025527362736826246,
+          0.00022338999903687953,
+          0.0001217217060537351
+        ],
+        "mean": 0.00015073482907060825,
+        "sd": 8.695735122291257e-05,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          8.565986636841267e-05,
+          0.00021983235903954993
+        ],
+        "wilcoxon_p_holm": 0.25
+      }
+    },
+    "GlxR": {
+      "C1_all11_minus_PWM_only": {
+        "per_fold_diffs": [
+          0.0009861336419067653,
+          0.000393196600824205,
+          0.0007941002019386798,
+          0.0006910269776364535,
+          0.00036889845123943524
+        ],
+        "mean": 0.0006466711747091078,
+        "sd": 0.0002647378738814114,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.00044304341635274683,
+          0.0008502989330654686
+        ],
+        "wilcoxon_p_holm": 0.25
+      },
+      "C2_all11_minus_PWMGE": {
+        "per_fold_diffs": [
+          0.0009351395456947934,
+          0.00036783720116170815,
+          0.000732107351968845,
+          0.0006165213393042256,
+          0.000288902268666791
+        ],
+        "mean": 0.0005881015413592726,
+        "sd": 0.00026458331353286025,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.0003860000557922448,
+          0.0007902030269263006
+        ],
+        "wilcoxon_p_holm": 0.25
+      }
+    },
+    "CodY": {
+      "C1_all11_minus_PWM_only": {
+        "per_fold_diffs": [
+          0.0025069074650379787,
+          0.0022883589213963606,
+          0.0018759456034888522,
+          0.0020424881549910272,
+          0.0020651740710602175
+        ],
+        "mean": 0.0021557748431948872,
+        "sd": 0.00024506092760015436,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.0019804083176039955,
+          0.0023370053839998303
+        ],
+        "wilcoxon_p_holm": 0.25
+      },
+      "C2_all11_minus_PWMGE": {
+        "per_fold_diffs": [
+          0.002100387134458395,
+          0.0019503038168263288,
+          0.0016150546665586998,
+          0.0016901293397749628,
+          0.0017356143326472157
+        ],
+        "mean": 0.0018182978580531205,
+        "sd": 0.00020097976412719414,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.0016691964690629083,
+          0.0019803204803527418
+        ],
+        "wilcoxon_p_holm": 0.25
+      }
+    },
+    "FNR_ecoli": {
+      "C1_all11_minus_PWM_only": {
+        "per_fold_diffs": [
+          0.000721389334242423,
+          0.0006264731402489928,
+          0.0008960822636618732,
+          0.0017724596486156726,
+          0.00030158787305652375
+        ],
+        "mean": 0.0008635984519650971,
+        "sd": 0.0005521303311321835,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.0004854638046160875,
+          0.0013520315228663729
+        ],
+        "wilcoxon_p_holm": 0.25
+      },
+      "C2_all11_minus_PWMGE": {
+        "per_fold_diffs": [
+          0.000531687123159381,
+          0.0004633636705617262,
+          0.0006867584910060962,
+          0.0016693833823818191,
+          9.067206053932147e-05
+        ],
+        "mean": 0.0006883729455296688,
+        "sd": 0.0005905103835556054,
+        "wilcoxon_signedrank_p": 0.0625,
+        "wilcoxon_label": "EXPLORATORY (n=5 paired folds, very low power)",
+        "n_bootstrap": 10000,
+        "bootstrap_mean_diff_ci95": [
+          0.0002844276686371574,
+          0.001214304878692844
+        ],
+        "wilcoxon_p_holm": 0.25
+      }
+    }
+  },
+  "fnr_arm": {
+    "cv_dir": "/Users/admin/Desktop/D_sites_web/D-Sites_/revisions/EVB-25-0116_R2_2026-11-30/results/r2/fnr_ablation",
+    "leakage": "PASSED (asserted inside run_cv)"
+  },
+  "ap_denominator_explanation": {
+    "factor": "CodY",
+    "pooled": {
+      "denominator": "pooled out-of-fold windows (labels over ALL known sites, +/-10 bp pad)",
+      "n_windows": 1592431,
+      "n_positive_windows": 9807,
+      "prevalence": 0.006158508594720902,
+      "pooled_AP": 0.017864289468670788
+    },
+    "per_fold": {
+      "denominator": "scored windows per fold (windows overlapping train-fold sites excluded)",
+      "folds": [
+        {
+          "fold": 0,
+          "n_scored": 1584448,
+          "n_pos_windows": 1824,
+          "prevalence": 0.0011511895625479663
+        },
+        {
+          "fold": 1,
+          "n_scored": 1584635,
+          "n_pos_windows": 2011,
+          "prevalence": 0.0012690619606407784
+        },
+        {
+          "fold": 2,
+          "n_scored": 1584496,
+          "n_pos_windows": 1872,
+          "prevalence": 0.0011814482333814664
+        },
+        {
+          "fold": 3,
+          "n_scored": 1584624,
+          "n_pos_windows": 2000,
+          "prevalence": 0.0012621290602691868
+        },
+        {
+          "fold": 4,
+          "n_scored": 1584724,
+          "n_pos_windows": 2100,
+          "prevalence": 0.0013251518876473127
+        }
+      ],
+      "mean_prevalence": 0.0012377961408973422,
+      "mean_AP": 0.003864471421206815
+    },
+    "prevalence_ratio_pooled_over_fold": 4.97538196415468,
+    "AP_ratio_pooled_over_fold": 4.622699334930531,
+    "explanation": "Average precision is a prevalence-scaled ranking summary. In the pooled OOF arrays every window of the universe is a candidate (prevalence 0.00616 for CodY). Per fold, windows overlapping TRAIN-fold sites are excluded from scoring: those windows carry ~80% of all positive labels (positives cluster at documented sites) while negatives are barely affected, collapsing per-fold prevalence ~5.3-fold (to ~0.00116). The AP values scale with their denominators' prevalence, which is why per-fold AP (~0.0039) is ~4.6x smaller than pooled AP (~0.0179). Both are correct; they answer different counting questions."
+  },
+  "runtime_s": 39.2
+}

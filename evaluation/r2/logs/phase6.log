@@ -1,0 +1,15 @@
+E1 abstract replaced
+E9.2 TSS proxy clarification inserted (2.1)
+E9.3 supervised-classifier phrasing (2.3)
+E2 section 3.1 + Table 2 (4-factor) + Figure 2 legend done
+E3 section 3.2 replaced
+E4 section 3.3 sentence softened
+E5 section 3.4 + Figure 4 image replaced (site-level PR)
+E6 section 3.5 + Table 3 (5 sets) + Figure 5 image replaced
+E8 conclusion + future directions replaced
+saved /Users/admin/Desktop/D_sites_web/D-Sites_/revisions/EVB-25-0116_R2_2026-11-30/manuscript/D-Sites_Manuscript_R2.docx (0s)
+clean version saved (247 blue runs stripped)
+line map written (23 key entries)
+QC: 96/96 checks passed
+deviations documented: E3: instruction said per-fold positive-site density 'fivefold higher' and per-fold AP 'larger' than pooled; corrected to fivefold LOWER / per-fold AP smaller (0.0009-0.0034), per results/r2/ap_denominator_explanation.json (prevalence ratio 4.98x, AP ratio 4.62x).; E3: instruction gave CodY gain as 'pooled AP 0.0017 to 0.0039'; stored data support mean per-fold AP 0.0017 to 0.0038 (tables/r2/table_ablation.csv); relabeled accordingly.; E3: instruction range 'per-fold AP (0.0009-0.0054)'; 0.0054 is the FNR POOLED AP, no per-fold AP reaches it; corrected to per-fold range 0.0009-0.0034 with pooled range 0.0030-0.0179.; Table 3 repressed fold/p for PWM-only: p = 0.806 in source JSON; table shows 0.81 (2-decimal display), fold 0.83.
+runtime 0s

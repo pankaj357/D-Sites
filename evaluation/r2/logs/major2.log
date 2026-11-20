@@ -1,0 +1,25 @@
+# r2_major2_fnr_operon.py — started 2026-11-14 14:55:30  python 3.11.14  numpy 2.4.6  scipy 1.17.1  dsites 1.3.0  seed=42
+[setup] 2750 operons; DEP 109 (act 49, rep 60); 124/124 DEP genes mapped
+[PWM-only] training + transfer ...
+[PWM-only] grouped 5-fold CV on 97 E. coli FNR sites (3 features)...
+[PWM-only] CV done (14s): pooled_AP=0.0038 OOB acc (per-fold mean)=0.980
+[PWM-only] final model: OOB acc=0.969, OOB-F1 cutoff=0.3516
+[PWM-only] LT2 scan (7s): 1374596 windows, 48353 full-set predictions, top819 saved
+[part1] unified curve over fraction of the full set ...
+  top  0.001 (n=    39): bg=0.014 DEP 4/109 fold=2.66 p=6.13e-02
+  top  0.003 (n=    98): bg=0.031 DEP 7/109 fold=2.08 p=4.92e-02
+  top  0.005 (n=   197): bg=0.059 DEP 11/109 fold=1.70 p=5.51e-02
+  top  0.010 (n=   394): bg=0.120 DEP 14/109 fold=1.07 p=4.31e-01
+  top  0.020 (n=   789): bg=0.223 DEP 25/109 fold=1.03 p=4.77e-01
+  top  0.050 (n=  1974): bg=0.429 DEP 48/109 fold=1.03 p=4.38e-01
+  top  0.100 (n=  3948): bg=0.629 DEP 72/109 fold=1.05 p=2.76e-01
+  top  0.250 (n=  9870): bg=0.869 DEP 96/109 fold=1.01 p=4.29e-01
+  top  0.500 (n= 19741): bg=0.969 DEP 105/109 fold=0.99 p=7.47e-01
+  top  1.000 (n= 39482): bg=0.998 DEP 109/109 fold=1.00 p=8.17e-01
+[verify] dsites_full_nested0.1pct: consistent=True
+[verify] dsites_full_nested5pct: consistent=True
+[part2] matched-count method comparison at N=819 ...
+[paired] hybrid_vs_fimo: DEP-all b=17 c=16 p=1 (holm 1) boot dRate CI=[-0.09174311926605505, 0.11009174311926606]
+[paired] hybrid_vs_pwm_only: DEP-all b=11 c=15 p=0.557 (holm 1) boot dRate CI=[-0.12844036697247707, 0.05504587155963303]
+[paired] pwm_only_vs_fimo: DEP-all b=14 c=9 p=0.405 (holm 1) boot dRate CI=[-0.03669724770642202, 0.12844036697247707]
+runtime 23s

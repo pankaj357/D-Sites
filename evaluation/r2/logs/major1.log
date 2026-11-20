@@ -1,0 +1,12 @@
+# r2_major1_matched_pairs.py — EVB-25-0116 R2 Major Comment 1
+# started 2026-11-14 14:51:18
+# python 3.11.14  numpy 2.4.6  scipy 1.17.1  sklearn 1.9.1  dsites 1.3.0
+# seed=42  n_boot=10000  fimo_cut=4.0
+# command: scripts/r2_major1_matched_pairs.py
+
+[AmrZ] N=483  DS 7/161 FIMO 18/161  b=5 c=16 p=0.02660369873046875
+[GlxR] N=185  DS 13/159 FIMO 17/159  b=10 c=14 p=0.5412561893463135
+[CodY] N=500  DS 64/224 FIMO 57/224  b=35 c=28 p=0.44996253629022254
+[FNR_ecoli] N=532  DS 13/89 FIMO 36/89  b=4 c=27 p=3.39532271027565e-05
+
+runtime 2.3s

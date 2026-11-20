@@ -62,7 +62,11 @@ Software/D-Sites/   D-Sites source code (v1.3.0)
 evaluation/         Complete held-out evaluation behind the paper
                     ├── data/      cleaned datasets (CollecTF, RegulonDB, LC–MS regulon, genomes)
                     ├── scripts/   cross-validation, fair-FIMO, ablation, cross-genome pipeline
-                    └── results/   every JSON/CSV — all numbers regenerate deterministically
+                    ├── results/   every JSON/CSV — all numbers regenerate deterministically
+                    └── r2/        second-round analyses: paired matched-count tests, FNR
+                                   operon-level matched-count comparison (incl. no-shape control),
+                                   feature-ablation statistics, site-level PR (results/ tables/
+                                   figures/ scripts/ logs/)
 ```
 
 ## ⚙️ How it works

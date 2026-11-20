@@ -41,3 +41,13 @@ evaluation/results/CHANGELOG.md
 evaluation/scripts/revise_manuscript_*.py
 evaluation/scripts/make_manuscript_figures.py
 evaluation/scripts/verify_pqt_*
+
+# Manuscript track (kept locally, not published)
+revisions/
+decison2.pdf
+Revision/
+Original/
+evaluation/*.docx
+evaluation/Response_to_Reviewers.md
+evaluation/PUSH_PLAN.md
+evaluation/REVISION_STRATEGY.md

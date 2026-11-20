@@ -1,0 +1,50 @@
+{
+  "factor": "CodY",
+  "pooled": {
+    "denominator": "pooled out-of-fold windows (labels over ALL known sites, +/-10 bp pad)",
+    "n_windows": 1592431,
+    "n_positive_windows": 9807,
+    "prevalence": 0.006158508594720902,
+    "pooled_AP": 0.017864289468670788
+  },
+  "per_fold": {
+    "denominator": "scored windows per fold (windows overlapping train-fold sites excluded)",
+    "folds": [
+      {
+        "fold": 0,
+        "n_scored": 1584448,
+        "n_pos_windows": 1824,
+        "prevalence": 0.0011511895625479663
+      },
+      {
+        "fold": 1,
+        "n_scored": 1584635,
+        "n_pos_windows": 2011,
+        "prevalence": 0.0012690619606407784
+      },
+      {
+        "fold": 2,
+        "n_scored": 1584496,
+        "n_pos_windows": 1872,
+        "prevalence": 0.0011814482333814664
+      },
+      {
+        "fold": 3,
+        "n_scored": 1584624,
+        "n_pos_windows": 2000,
+        "prevalence": 0.0012621290602691868
+      },
+      {
+        "fold": 4,
+        "n_scored": 1584724,
+        "n_pos_windows": 2100,
+        "prevalence": 0.0013251518876473127
+      }
+    ],
+    "mean_prevalence": 0.0012377961408973422,
+    "mean_AP": 0.003864471421206815
+  },
+  "prevalence_ratio_pooled_over_fold": 4.97538196415468,
+  "AP_ratio_pooled_over_fold": 4.622699334930531,
+  "explanation": "Average precision is a prevalence-scaled ranking summary. In the pooled OOF arrays every window of the universe is a candidate (prevalence 0.00616 for CodY). Per fold, windows overlapping TRAIN-fold sites are excluded from scoring: those windows carry ~80% of all positive labels (positives cluster at documented sites) while negatives are barely affected, collapsing per-fold prevalence ~5.3-fold (to ~0.00116). The AP values scale with their denominators' prevalence, which is why per-fold AP (~0.0039) is ~4.6x smaller than pooled AP (~0.0179). Both are correct; they answer different counting questions."
+}
