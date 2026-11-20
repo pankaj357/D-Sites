@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-r2_major2_fnr_operon.py — EVB-25-0116 R2, Major Comment 2.
+fnr_operon_matched_counts.py
 
 Rebuilds the FNR operon-level analysis on ONE consistent denominator with a
 PWM-only transfer comparison and a matched-count method comparison.
@@ -63,8 +63,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import binomtest
 
-R2 = Path(__file__).resolve().parents[1]
-ROOT = R2.parents[1]
+ROOT = Path(__file__).resolve().parents[2]   # repository root
 EVAL = ROOT / "evaluation"
 sys.path.insert(0, str(ROOT / "Software" / "D-Sites" / "src"))
 sys.path.insert(0, str(EVAL / "scripts"))
@@ -77,11 +76,11 @@ from fnr_operon_enrichment import (load_operons, load_deps, map_deps_to_operons,
                                    operon_promoters, overlap_mask, group_test)
 from r2_major1_matched_pairs import wilson
 
-OUT = R2 / "results" / "r2"
-TAB = R2 / "tables" / "r2"
-FIG = R2 / "figures" / "r2"
-LOGD = R2 / "logs" / "r2"
-PWM_DIR = OUT / "fnr_pwm_only_transfer"
+OUT = EVAL / "results" / "fnr_operon"
+TAB = EVAL / "tables"
+FIG = EVAL / "figures_local"
+LOGD = EVAL / "logs"
+PWM_DIR = OUT / "pwm_only_model"
 for d in (OUT, TAB, FIG, LOGD, PWM_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
@@ -383,7 +382,7 @@ def main():
     make_figure(curve_df, matched)
 
     log(f"runtime {time.time()-t0:.0f}s")
-    with open(LOGD / "major2.log", "w") as fh:
+    with open(LOGD / "fnr_operon_matched_counts.log", "w") as fh:
         fh.write("\n".join(log_lines) + "\n")
     print("outputs written", flush=True)
 
@@ -482,7 +481,7 @@ def make_figure(curve_df, matched):
     ax.legend(h1 + h2, l1 + l2, loc="upper left", fontsize=8)
     ax.set_title("B. Unified enrichment curve (single denominator)")
     fig.suptitle("FNR transfer (E. coli-trained) — operon-level analysis, matched-count methods "
-                 "(EVB-25-0116 R2)", y=1.02)
+                 "FNR operon-level validation", y=1.02)
     fig.tight_layout()
     fig.savefig(FIG / "fig5_fnr_operon_v2.png", dpi=300, bbox_inches="tight")
     plt.close(fig)

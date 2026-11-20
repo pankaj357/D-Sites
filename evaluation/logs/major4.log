@@ -1,0 +1,10 @@
+# r2_major4_sitelevel_pr.py  seed=42  python 3.11.14  dsites 1.3.0
+[AmrZ] site-level AP (floor): D-Sites 0.9551 vs FIMO 0.9309 (baseline 0.444; in-space 161/363) | window AP pooled DS 0.0044 / FIMO(0-fill) 0.0039 / FIMO(floored) 0.0039 | window prevalence 0.00347
+[GlxR] site-level AP (floor): D-Sites 0.9698 vs FIMO 0.9763 (baseline 0.791; in-space 159/201) | window AP pooled DS 0.0102 / FIMO(0-fill) 0.0086 / FIMO(floored) 0.0086 | window prevalence 0.00761
+[CodY] site-level AP (floor): D-Sites 1.0000 vs FIMO 0.9957 (baseline 0.862; in-space 224/260) | window AP pooled DS 0.0179 / FIMO(0-fill) 0.0096 / FIMO(floored) 0.0096 | window prevalence 0.00616
+[FNR_ecoli] site-level AP (floor): D-Sites 0.9963 vs FIMO 0.9944 (baseline 0.918; in-space 89/97) | window AP pooled DS 0.0054 / FIMO(0-fill) 0.0076 / FIMO(floored) 0.0076 | window prevalence 0.00296
+[verify] regenerating old pr_sitelevel CSVs (make_pr_curves, unmodified) and diffing vs stored ...
+[verify] AmrZ: old-definition regeneration identical = True
+[verify] GlxR: old-definition regeneration identical = True
+[verify] CodY: old-definition regeneration identical = True
+runtime 6s

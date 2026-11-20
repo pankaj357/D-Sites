@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-r2_major3_ablation_stats.py — EVB-25-0116 R2, Major Comment 3.
+ablation_significance.py
 
-Ablation statistics, the missing FNR arm, and a numerical explanation of the
-pooled-vs-per-fold AP gap.
+Feature-ablation statistics, the FNR ablation arm, and a numerical explanation
+of the pooled-vs-per-fold average-precision gap.
 
 READ-ONLY inputs (evaluation/ never modified):
   evaluation/results/ablation_{AmrZ,GlxR,CodY}.json   stored 3-factor ablation
@@ -50,13 +50,12 @@ import numpy as np
 import pandas as pd
 from scipy.stats import wilcoxon
 
-R2 = Path(__file__).resolve().parents[1]
-ROOT = R2.parents[1]
+ROOT = Path(__file__).resolve().parents[2]   # repository root
 EVAL = ROOT / "evaluation"
-OUT = R2 / "results" / "r2"
-TAB = R2 / "tables" / "r2"
-LOGD = R2 / "logs" / "r2"
-FNR_DIR = OUT / "fnr_ablation"
+OUT = EVAL / "results" / "ablation"
+TAB = EVAL / "tables"
+LOGD = EVAL / "logs"
+FNR_DIR = OUT / "fnr"
 for d in (OUT, TAB, LOGD, FNR_DIR):
     d.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT / "Software" / "D-Sites" / "src"))

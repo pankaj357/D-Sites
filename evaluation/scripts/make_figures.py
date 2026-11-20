@@ -1,6 +1,7 @@
-"""R2 final figure regeneration (EVB-25-0116.R2 correction pass).
-Regenerates Figures 2-5 from the deposited R2 statistics ONLY (no new analyses).
-Outputs: figures/r2/final/figure{N}.png (300 dpi) + .pdf
+"""make_figures.py
+Regenerates the manuscript figures from the deposited evaluation statistics
+ONLY (no new analyses). Outputs are written to evaluation/figures_local/
+(local use; figures are not part of the published repository).
 """
 import json, csv, ast
 import numpy as np
@@ -11,9 +12,8 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 9, 'axes.titlesize': 10, 'axes.labelsize': 9,
                      'legend.fontsize': 8, 'xtick.labelsize': 8, 'ytick.labelsize': 8,
                      'axes.linewidth': 0.9, 'lines.linewidth': 1.6, 'figure.dpi': 300})
-R = 'results/r2'
-EV = '../../evaluation/results'
-OUT = 'figures/r2/final'
+EV = 'evaluation/results'
+OUT = 'evaluation/figures_local'
 import os; os.makedirs(OUT, exist_ok=True)
 
 def save(fig, name):
@@ -23,7 +23,7 @@ def save(fig, name):
     print('wrote', name)
 
 # ---------------- Figure 2 ----------------
-pr = json.load(open(f'{R}/paired_site_recovery.json'))
+pr = json.load(open(f'{EV}/paired/paired_site_recovery.json'))
 cv = {r['TF']: r for r in csv.DictReader(open(f'{EV}/cv_summary.csv'))}
 order = ['AmrZ', 'GlxR', 'CodY', 'FNR_ecoli']; labels = ['AmrZ', 'GlxR', 'CodY', 'FNR']
 rec = [float(cv[t]['recall_in_space_mean']) for t in order]
@@ -91,7 +91,7 @@ save(fig, 'figure3')
 fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.6))
 panels = ['A. AmrZ', 'B. GlxR', 'C. CodY', 'D. FNR']
 for ax, tf, ttl in zip(axes.flat, order, panels):
-    d = json.load(open(f'{R}/sitelevel_pr_{tf}.json'))
+    d = json.load(open(f'{EV}/sitelevel_pr/sitelevel_pr_{tf}.json'))
     a = d['variant_a_floor_at_threshold']
     cp = a['curve_points']
     ax.plot(cp['dsites_recall'], cp['dsites_precision'], color='#4472C4',
@@ -116,10 +116,10 @@ save(fig, 'figure4')
 def as_dict(v):
     return v if isinstance(v, dict) else ast.literal_eval(v)
 
-m2 = json.load(open(f'{R}/fnr_operon_matched819.json'))
+m2 = json.load(open(f'{EV}/fnr_operon/fnr_operon_matched819.json'))
 fisher = as_dict(m2['fisher_per_method'])
 bg_rates = as_dict(m2['background_rate'])
-curve = json.load(open(f'{R}/fnr_enrichment_curve_fullset_fraction.json'))['curve']
+curve = json.load(open(f'{EV}/fnr_operon/fnr_enrichment_curve_fullset_fraction.json'))['curve']
 fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.1))
 ax = axes[0]
 methods = [('fimo', 'FIMO p<1e-4', '#C00000'), ('hybrid', 'D-Sites hybrid', '#4472C4'),

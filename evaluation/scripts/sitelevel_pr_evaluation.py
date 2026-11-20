@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-r2_major4_sitelevel_pr.py — EVB-25-0116 R2, Major Comment 4.
+sitelevel_pr_evaluation.py
 
 Site-level precision-recall as the PRIMARY evaluation, on the IDENTICAL
 window universe and IDENTICAL positive-site definitions for both tools, per
@@ -35,7 +35,7 @@ Site-level PR definition (PRIMARY):
   Window-level AP (existing computation) is reported side-by-side for the
   relationship explanation, with ONE unified window prevalence per factor
   (full-universe labels -- the two tools' old ranked lists had different
-  denominators, which is why the reviewer saw 0.0029 vs 0.0035 for AmrZ).
+  denominators, which resolves the previously reported 0.0029-vs-0.0035 AmrZ discrepancy).
 
 VERIFICATION: the old supplementary site-level curves
 (evaluation/results/pr_sitelevel_{TF}.csv) are REGENERATED into the R2
@@ -61,14 +61,14 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from sklearn.metrics import average_precision_score, precision_recall_curve
 
-R2 = Path(__file__).resolve().parents[1]
-ROOT = R2.parents[1]
+ROOT = Path(__file__).resolve().parents[2]   # repository root
+
 EVAL = ROOT / "evaluation"
-OUT = R2 / "results" / "r2"
-TAB = R2 / "tables" / "r2"
-FIG = R2 / "figures" / "r2"
-LOGD = R2 / "logs" / "r2"
-VERIFY = OUT / "old_sitelevel_verify"
+OUT = EVAL / "results" / "sitelevel_pr"
+TAB = EVAL / "tables"
+FIG = EVAL / "figures_local"
+LOGD = EVAL / "logs"
+VERIFY = OUT / "verification_previous_definitions"
 for d in (OUT, TAB, FIG, LOGD, VERIFY):
     d.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT / "Software" / "D-Sites" / "src"))

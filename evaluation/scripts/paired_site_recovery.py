@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-r2_major1_matched_pairs.py — EVB-25-0116 R2, Major Comment 1.
+paired_site_recovery.py
 
-Reproduces, INDEPENDENTLY from the cached evaluation artifacts, the
+Independently reproduces, from the cached evaluation artifacts, the
 matched-count site-recovery comparison between D-Sites (pooled out-of-fold
 probabilities, grouped 5-fold CV) and FIMO (one global run on the identical
 promoter search space), and adds PAIRED site-level statistics.
@@ -50,8 +50,7 @@ handled by pairing per site and by the cluster bootstrap):
   - Reference: reverse top-5%-count comparison (N2 = 5% of pooled windows;
     both methods' top-N2), recomputed from the same npz caches.
 
-No model retraining; deterministic (seed 42). Outputs under the R2 workspace
-only (results/r2/, tables/r2/, logs/r2/).
+No model retraining; deterministic (seed 42). Outputs under evaluation/results/paired, evaluation/tables, evaluation/logs.
 """
 
 import json
@@ -65,15 +64,14 @@ import pandas as pd
 from scipy.stats import binom, binomtest
 
 # --------------------------------------------------------------------------
-# paths (read-only evaluation/ + R2 workspace outputs)
+# paths (read-only inputs; outputs under evaluation/)
 # --------------------------------------------------------------------------
-R2 = Path(__file__).resolve().parents[1]
-ROOT = R2.parents[1]
+ROOT = Path(__file__).resolve().parents[2]   # repository root
 EVAL_RESULTS = ROOT / "evaluation" / "results"
 EVAL_SCRIPTS = ROOT / "evaluation" / "scripts"
-OUT_RES = R2 / "results" / "r2"
-OUT_TAB = R2 / "tables" / "r2"
-OUT_LOG = R2 / "logs" / "r2"
+OUT_RES = ROOT / "evaluation" / "results" / "paired"
+OUT_TAB = ROOT / "evaluation" / "tables"
+OUT_LOG = ROOT / "evaluation" / "logs"
 for d in (OUT_RES, OUT_TAB, OUT_LOG):
     d.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT / "Software" / "D-Sites" / "src"))   # dsites
@@ -88,7 +86,7 @@ PAD = ec.PAD
 N_BOOT = 10_000
 FIMO_CUT = -np.log10(1e-4)              # 4.0
 
-# reviewer's table (Major Comment 1)
+# independent reference values (published comparison table)
 REVIEWER = {"AmrZ": (7, 18, 483), "GlxR": (13, 17, 185),
             "CodY": (64, 57, 500), "FNR_ecoli": (13, 36, 532)}
 
@@ -206,7 +204,7 @@ def topn_mask(full_scores, N):
 def main():
     t0 = time.time()
     repro, paired, reverse_rows = {}, {}, {}
-    log = [f"# r2_major1_matched_pairs.py — EVB-25-0116 R2 Major Comment 1",
+    log = [f"# paired_site_recovery.py",
            f"# started {time.strftime('%Y-%m-%d %H:%M:%S')}",
            f"# python {sys.version.split()[0]}  numpy {np.__version__}  "
            f"scipy {__import__('scipy').__version__}  sklearn "
@@ -239,7 +237,7 @@ def main():
         ds_stats["N_predictions"] = N
         fi_stats["N_predictions"] = N
 
-        # verification vs reviewer's table and stored json
+        # verification vs independent reference values and stored json
         stored = json.load(open(EVAL_RESULTS / f"fimo_fair_{tf}.json"))
         sm = stored["matched_count"]
         rev = REVIEWER[tf]
